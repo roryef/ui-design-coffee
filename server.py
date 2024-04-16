@@ -727,6 +727,13 @@ def learn(page_number):
             return render_template("intro.html", lesson=intro_data, lesson_metadata=lesson_metadata, legend=legend, ingredients=ingredients)
         else:
             return "Intro data not found", 404
+    elif page_number == "review":
+        # Render the review page
+        review_data = lessons.get("review")
+        if review_data:
+            return render_template("review.html", lesson=review_data, lesson_metadata=lesson_metadata, legend=legend, ingredients=ingredients)
+        else:
+            return "Review data not found", 404
     else:
         # Render other lesson pages
         lesson_data = lessons.get(page_number)

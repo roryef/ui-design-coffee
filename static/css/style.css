@@ -255,3 +255,23 @@ header {
 }
 
 
+.review-category-container {
+    padding-left: 220px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.notes {
+    font-style: italic;
+    color: #666;
+}
+
+.ingredients {
+    padding-left: 20px;
+    list-style-type: circle;
+}
+
+.drink strong {
+    color: #333;
+}
