@@ -78,6 +78,35 @@ legend = {
     ]
 }
 
+ingredients = {
+    {
+        "foam": {
+           "name": "Foam",
+           "image": "./media/legend/foam.png" 
+        },
+        "milk": {
+            "name": "Steamed Milk",
+            "image": "./media/legend/milk.png"
+        },
+        "cocoa":{
+            "name": "Cocoa",
+            "image": "./media/legend/cocoa.png"
+        },
+        "syrup":{
+            "name": "Syrup",
+            "image": "./media/legend/syrup.png"  
+        },
+        "water":{
+            "name": "Water",
+            "image": "./media/legend/water.png"  
+        },
+        "espresso":{
+            "name": "Espresso",
+            "image": "./media/legend/espresso.png"  
+        },
+    }
+}
+
 home_data = {
     "title": "<span class='highlight'>Welcome!</span> You will learn how to <span class='highlight'>Distinguish Coffee</span> today!",
     "buttons": [
@@ -700,6 +729,10 @@ def learn(page_number):
 def update_lesson(page_number):
     user_data["lessons"][page_number] = request.json
     return jsonify(user_data["lessons"][page_number])
+
+@app.route('/ingredients', methods=['GET'])
+def get_ingredients():
+    return jsonify(ingredients)
 
 if __name__ == '__main__':
     app.run()
