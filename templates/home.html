@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="home-container">
+    <h1> {{ data.title|safe }} </h1>
+    <div>
+        {% for button in data.buttons %}
+            <a href="{{ button.link }}" class="button">{{ button.text }}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

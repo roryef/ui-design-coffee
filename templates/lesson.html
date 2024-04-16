@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="sidebar">
+    <ul>
+        {% for key, value in lesson_metadata.contents.items() %}
+            <li {% if key == lesson.id %}class="active"{% endif %}>
+                <a href="{{ url_for('learn', page_number=key) }}">{{ value }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="container">
+        <h1>{{ lesson.name }}</h1>
+        {% if lesson.video %}
+            <div class="video">
+                <p>{{ lesson.video_header }}</p>
+                <iframe width="560" height="315"
+                    src="{{ lesson.video }}"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        {% endif %}
+    </div>
+    <br>
+    <div class="container">
+        <h2>{{ lesson.content_header }}</h2>
+        <div class="cards-wrapper">
+            <div class="card-container">
+                {% for drink in lesson.drinks %}
+                    <div class="card" data-drink-id="{{ drink.drink_id }}">
+                        <div class="card-content">
+                            {% for slide in drink.slides %}
+                                <div class="slide" id="slide-{{ drink.drink_id }}-{{ slide.slide_id }}" {% if loop.index > 1 %}style="display: none;"{% endif %}>
+                                    {% if slide.title_type== 'text' %}
+                                        <h2>{{slide.title}}</h2>
+                                    {% elif slide.title_type == 'button' %}
+                                        <button onclick="resetDrink({{ drink.drink_id }})">{{ slide.title }}</button>
+                                    {% endif %}
+                                    {% if slide.body_type == 'text' %}
+                                        <h3>{{ slide.body }}</h3>
+                                    {% elif slide.body_type == 'image' %}
+                                        <img src="{{ url_for('static', filename=slide.body) }}" alt="{{ slide.title }}">
+
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="card-footer">
+                            <div class="arrows">
+                                <span class="arrow left-arrow" onclick="changeSlide({{ drink.drink_id }}, 'prev')">&#10094;</span>
+                                <span class="arrow right-arrow" onclick="changeSlide({{ drink.drink_id }}, 'next')">&#10095;</span>
+                            </div>
+                            <div class="dots">
+                                {% for slide in drink.slides %}
+                                    <span class="dot" onclick="goToSlide({{ drink.drink_id }}, {{ slide.slide_id }})"></span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <nav class="lesson-navigation">
+            {% if lesson.previous %}
+                <a href="{{ url_for('learn', page_number=lesson.previous) }}">Previous</a>
+            {% endif %}
+            {% if lesson.next %}
+                <a href="{{ url_for('learn', page_number=lesson.next) }}">Next</a>
+            {% endif %}
+        </nav>
+    </div>
+    
+</div>
+
+
+{% endblock %}

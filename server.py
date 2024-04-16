@@ -231,7 +231,7 @@ lessons = {
     "1": {
         "id": 1,
         "name": "1. Black (Espresso)",
-        "video": "https://www.youtube.com/watch?v=LiNjMyAGVt0",
+        "video": "https://www.youtube.com/embed/LiNjMyAGVt0?si=_TVqL4wgbh8VpWZh",
         "video_header": "Click to watch how to pull an espresso",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
@@ -306,7 +306,7 @@ lessons = {
     "2": {
         "id": 2,
         "name": "2. Espresso + Steamed Milk",
-        "video": "https://www.youtube.com/watch?v=OtdlZbc9XK0",
+        "video": "https://www.youtube.com/embed/OtdlZbc9XK0?si=QlPPzFceUqSZ5txQ",
         "video_header": "Click to watch how to steam milk",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
@@ -389,7 +389,7 @@ lessons = {
     "3": {
         "id": 3,
         "name": "3. Espresso + Steamed Milk + Foam",
-        "video": "https://www.youtube.com/watch?v=NLO0mWJuIHk",
+        "video": "https://www.youtube.com/embed/NLO0mWJuIHk?si=IwSFV4c-V2i1-Gtw",
         "video_header": "Click to watch how to make foam",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
@@ -488,7 +488,7 @@ lessons = {
     "4": {
         "id": 4,
         "name": "4. Espresso + Others",
-        "video": "https://www.youtube.com/watch?v=8FLzhL-T25E",
+        "video": "https://www.youtube.com/embed/8FLzhL-T25E?si=v6iX685mOVF64UWp",
         "video_header": "Click to watch how to add flavor",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
@@ -715,8 +715,6 @@ lessons = {
 }
 
 
-
-
 @app.route('/', methods=['GET'])
 def home():
     return render_template("home.html", data = home_data)
@@ -731,4 +729,4 @@ def update_lesson(page_number):
     return jsonify(user_data["lessons"][page_number])
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
