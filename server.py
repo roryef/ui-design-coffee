@@ -111,7 +111,7 @@ home_data = {
     "buttons": [
         {
             "text": "Learn",
-            "link": "/learn/1",
+            "link": "/learn/intro",
         },
         {
             "text": "Quiz",
@@ -744,7 +744,6 @@ def update_lesson(page_number):
 @app.route('/get-category-drinks', methods=['GET'])
 def get_category_drinks():
     title = request.args.get('title')
-    # Lookup the drinks for the given title in your data
     for category in lessons['intro']['contents']:
         if category['categories']['title'] == title:
             return jsonify(drinks=category['categories']['drinks'])
