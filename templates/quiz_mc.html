@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="{{ url_for('static', filename='js/quiz_mc.js') }}"></script>
+<script>
+    let question = {{ question | tojson }};
+</script>
+
+<div class="sidebar">
+
+    <ul>
+        {% for key, value in metadata.items() if key != 'review' %}
+            <li {% if key == question_id %}class="active"{% endif %}>
+                <a href="{{ url_for('quiz_question', question_id=key) }}">Question {{ key }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="legend-section">
+        <h3>Legend</h3>
+        <ul class="legend">
+            {% for item in legend %}
+                <li>
+                    <img src="{{ url_for('static', filename=item.image) }}" class="legend-image" alt="{{ item.name }}">
+                    {{ item.name }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{ question.question }}</h2>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-12">
+                <div id="feedback"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form id="quiz-form">
+                    {% for option in question.options %}
+                    <div class="option">
+                        <input type="radio" id="{{ option.id }}" name="answer" value="{{ option.id }}">
+                        <label for="{{ option.id }}">{{ option.id }}) {{ option.text }}</label>
+                    </div>
+                    {% endfor %}
+                    <!-- Add hidden input field for correct answer -->
+                    <input type="hidden" id="correct-answer" value="{{ question.correct_answer }}">
+                    <button type="submit" id="submit-button">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="navigation">
+            <nav class="quiz-navigation">
+                {% if question.next == "Review" %}
+                    <a href="{{ url_for('quiz_review') }}">Review</a>
+                {% endif %}
+                {% if question.previous %}
+                    <a href="{{ url_for('quiz_question', question_id=question.previous) }}">Previous</a>
+                {% endif %}
+                {% if question.next %}
+                    <a href="{{ url_for('quiz_question', question_id=question.next) }}">Next</a>
+                {% endif %}
+                
+            </nav>
+        </div>
+    </div>
+    
+    
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Quiz Review</h1>
+            <p>Congratulations! You have completed the quiz!</p>
+            <h2>Quiz Score: {{ user_data.quiz.score }} / 4</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Question Reviews:</h3>
+            <ul>
+                {% for q in quiz.questions if q.id != 5 %}
+                <li>
+                    <p>Question {{ q.id }}: {{ q.question }}</p>
+                    
+                    {% if user_data.quiz.answers[q.id].answered %}
+                        <p>Selected Option: {{ user_data.quiz.answers[q.id].selected_option }}</p>
+                        <p>Correct Option: {{ q.options[q.correct_answer - 1].text }}</p>
+                    {% else %}
+                        <p>Not answered</p>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

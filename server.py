@@ -46,6 +46,17 @@ user_data = {
             "completed": False,
             "time_spent": 0
         },
+    },
+    "quiz": {
+        "completed": False,
+        "score": 0,
+        "answers": {
+            1: {"selected_option": None, "answer_correct": False, "answered": False},
+            2: {"selected_option": None, "answer_correct": False, "answered": False},
+            3: {"selected_option": None, "answer_correct": False, "answered": False},
+            4: {"selected_option": None, "answer_correct": False, "answered": False},
+            5: {"selected_option": None, "answer_correct": False, "answered": False},
+        },
     }
 }
 
@@ -129,6 +140,17 @@ lesson_metadata = {
         "quiz": "Quiz"
  }   
 }
+
+quiz_metadata = {
+    "questions": {
+        "1": "Question 1: What is the ratio of espresso to steamed milk in a cortado?",
+        "2": "Question 2: What goes in a mocha?",
+        "3": "Question 3: Select the image that corresponds to 'latte'.",
+        "4": "Question 4: Select the final product.",
+        "review": "Review"
+    }
+}
+
 lessons = {
     "intro": {
       "title": "The lesson will teach you 4 types of coffee drinks",
@@ -713,6 +735,73 @@ lessons = {
     }
 }
 
+quiz = {
+    "id": "quiz",
+    "name": "Quiz",
+    "questions": [
+    {
+        "id": 1,
+        "question": "What is the ratio of espresso to steamed milk in a cortado?",
+        "options": [
+            {"id": 1, "text": "1:1"},
+            {"id": 2, "text": "1:2"},
+            {"id": 3, "text": "1:3"},
+            {"id": 4, "text": "1:4"},
+            {"id": 5, "text": "1:5"}
+        ],
+        "correct_answer": 1,
+        "next": 2,
+    },
+    {
+        "id": 2,
+        "question": "What goes in a mocha?",
+        "options": [
+            {"id": 1, "text": "Espresso"},
+            {"id": 2, "text": "Espresso + water"},
+            {"id": 3, "text": "Espresso + steamed milk"},
+            {"id": 4, "text": "Espresso + steamed milk + foam"},
+            {"id": 5, "text": "Espresso + steamed milk + foam + chocolate"}
+        ],
+        "correct_answer": 5,
+        "next": 3,
+        "previous": 1
+    },
+    {
+        "id": 3,
+        "question": "Select the image that corresponds to 'latte.'",
+        "options": [
+            {"id": 1, "text": "Espresso", "image_url": "./media/quiz/Espresso.png"},
+            {"id": 2, "text": "Latte", "image_url": "./media/quiz/Latte.png"},
+            {"id": 3, "text": "Cappuccino", "image_url": "./media/quiz/Cappuccino.png"},
+            {"id": 4, "text": "Americano", "image_url": "./media/quiz/Americano.png"}
+        ],
+        "correct_answer": 2,
+        "next": 4,
+        "previous": 2
+    },
+    {
+        "id": 4,
+        "question": "Select the final product",
+        "question_img": "/media/quiz/4_question.png",
+        "options": [
+            {"id": 1, "text": "Mocha", "image_url": "./media/quiz/Mocha.png"},
+            {"id": 2, "text": "Cappuccino", "image_url": "./media/quiz/Cappuccino.png"},
+            {"id": 3, "text": "Macchiato", "image_url": "./media/quiz/Macchiato.png"},
+            {"id": 4, "text": "Americano", "image_url": "./media/quiz/Americano.png"}
+        ],
+        "correct_answer": 4,
+        "next": 5,
+        "previous": 3
+    },
+    {
+        "id": 5,
+        "next": "Review",
+        "previous": 4
+    }
+    ]
+
+}
+
 
 @app.route('/', methods=['GET'])
 def home():
@@ -726,6 +815,53 @@ def learn(page_number):
 def update_lesson(page_number):
     user_data["lessons"][page_number] = request.json
     return jsonify(user_data["lessons"][page_number])
+
+
+@app.route('/quiz/<int:question_id>', methods=['GET'])
+def quiz_question(question_id):
+
+    question_data = quiz["questions"][question_id - 1]
+    question_metadata = quiz_metadata["questions"]
+
+    if question_id in [1, 2]:
+        template_name = "quiz_mc.html"
+    elif question_id in [3, 4]:
+        template_name = "quiz_mc_img.html"
+    
+    if question_data.get("next") == "Review":
+        # Redirect to the review page
+        return redirect('/quiz/review')
+
+    return render_template(template_name, question=question_data, metadata=question_metadata, legend=legend, ingredients=ingredients)
+
+
+@app.route('/submit-answer/<int:question_id>', methods=['POST'])
+def submit_answer(question_id):
+    selected_option = request.form.get('selectedOption')
+    correct_answer = request.form.get('correctAnswer')
+    
+    answer_correct = selected_option == correct_answer
+    
+
+    user_data["quiz"]["answers"][question_id] = {
+        "selected_option": selected_option,
+        "answer_correct": answer_correct,
+        "answered": True
+    }
+    
+    if answer_correct:
+        user_data["quiz"]["score"] += 1
+    print(user_data["quiz"]["score"])
+    print(f'Question {question_id}: Selected option: {selected_option}, Answer correct: {answer_correct}')
+
+    return jsonify(correct=answer_correct)
+
+
+@app.route('/quiz/review')
+def quiz_review():
+    # Pass user_data to the template for rendering
+    return render_template('quiz_review.html', user_data=user_data, quiz=quiz)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
