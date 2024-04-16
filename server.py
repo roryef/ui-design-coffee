@@ -723,16 +723,12 @@ def home():
 
 @app.route('/learn/<page_number>', methods=['GET'])
 def learn(page_number):
-    return render_template("lesson.html", lesson=lessons[page_number], lesson_metadata=lesson_metadata, legend=legend)
+    return render_template("lesson.html", lesson=lessons[page_number], lesson_metadata=lesson_metadata, legend=legend, ingredients=ingredients)
 
 @app.route('/learn/<page_number>/update', methods=['POST'])
 def update_lesson(page_number):
     user_data["lessons"][page_number] = request.json
     return jsonify(user_data["lessons"][page_number])
-
-@app.route('/ingredients', methods=['GET'])
-def get_ingredients():
-    return jsonify(ingredients)
 
 if __name__ == '__main__':
     app.run()
