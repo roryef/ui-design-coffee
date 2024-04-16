@@ -49,63 +49,62 @@ user_data = {
     }
 }
 
-legend = {
-    [
-        {
-           "name": "Foam",
-           "image": "./media/legend/foam.png" 
-        },
-        {
-            "name": "Steamed Milk",
-            "image": "./media/legend/milk.png"
-        },
-                {
-            "name": "Cocoa",
-            "image": "./media/legend/cocoa.png"
-        },
-        {
-            "name": "Syrup",
-            "image": "./media/legend/syrup.png"  
-        },
-                {
-            "name": "Water",
-            "image": "./media/legend/water.png"  
-        },
-        {
-            "name": "Espresso",
-            "image": "./media/legend/espresso.png"  
-        },
-    ]
-}
+legend = [
+    {
+        "name": "Foam",
+        "image": "./media/legend/foam.png"
+    },
+    {
+        "name": "Steamed Milk",
+        "image": "./media/legend/milk.png"
+    },
+    {
+        "name": "Cocoa",
+        "image": "./media/legend/cocoa.png"
+    },
+    {
+        "name": "Syrup",
+        "image": "./media/legend/syrup.png"
+    },
+    {
+        "name": "Water",
+        "image": "./media/legend/water.png"
+    },
+    {
+        "name": "Espresso",
+        "image": "./media/legend/espresso.png"
+    },
+]
 
-ingredients = {
+ingredients = [
     {
         "foam": {
-           "name": "Foam",
-           "image": "./media/legend/foam.png" 
+            "name": "Foam",
+            "image": "./media/legend/foam.png"
         },
         "milk": {
             "name": "Steamed Milk",
             "image": "./media/legend/milk.png"
         },
-        "cocoa":{
+        "cocoa": {
             "name": "Cocoa",
             "image": "./media/legend/cocoa.png"
         },
-        "syrup":{
+        "syrup": {
             "name": "Syrup",
-            "image": "./media/legend/syrup.png"  
+            "image": "./media/legend/syrup.png"
         },
-        "water":{
+        "water": {
             "name": "Water",
-            "image": "./media/legend/water.png"  
+            "image": "./media/legend/water.png"
         },
-        "espresso":{
+        "espresso": {
             "name": "Espresso",
-            "image": "./media/legend/espresso.png"  
+            "image": "./media/legend/espresso.png"
         },
     }
-}
+]
+
 
 home_data = {
     "title": "<span class='highlight'>Welcome!</span> You will learn how to <span class='highlight'>Distinguish Coffee</span> today!",

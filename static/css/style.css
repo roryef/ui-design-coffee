@@ -7,6 +7,7 @@ body {
 
 /* Header styles */
 header {
+    
     background-color: #333;
     color: white;
     padding: 0.5em 0;
@@ -158,7 +159,7 @@ header {
 
 /* Sidebar styles */
 .sidebar {
-    background: #f4f4f4;
+    background: #ffffff;
     padding: 20px;
     position: fixed; 
     width: 200px;
@@ -182,6 +183,26 @@ header {
 
 .sidebar ul li.active {
     background-color: #ddd;
+}
+
+.legend-section {
+    margin-top: 20px;
+}
+
+.legend {
+    list-style: none;
+    padding: 0;
+    background-color:#ffffff
+}
+
+.legend li {
+    margin-bottom: 0px;
+}
+
+.legend-image {
+    width: 180px;
+    height: auto; 
+    display: block; 
 }
 
 /* Navigation styles */
