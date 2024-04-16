@@ -720,12 +720,36 @@ def home():
 
 @app.route('/learn/<page_number>', methods=['GET'])
 def learn(page_number):
-    return render_template("lesson.html", lesson=lessons[page_number], lesson_metadata=lesson_metadata, legend=legend, ingredients=ingredients)
+    if page_number == "intro":
+        # Render the intro page
+        intro_data = lessons.get("intro")
+        if intro_data:
+            return render_template("intro.html", lesson=intro_data, lesson_metadata=lesson_metadata, legend=legend, ingredients=ingredients)
+        else:
+            return "Intro data not found", 404
+    else:
+        # Render other lesson pages
+        lesson_data = lessons.get(page_number)
+        if lesson_data:
+            return render_template("lesson.html", lesson=lesson_data, lesson_metadata=lesson_metadata, legend=legend, ingredients=ingredients)
+        else:
+            return "Lesson data not found", 404
+
 
 @app.route('/learn/<page_number>/update', methods=['POST'])
 def update_lesson(page_number):
     user_data["lessons"][page_number] = request.json
     return jsonify(user_data["lessons"][page_number])
+
+@app.route('/get-category-drinks', methods=['GET'])
+def get_category_drinks():
+    title = request.args.get('title')
+    # Lookup the drinks for the given title in your data
+    for category in lessons['intro']['contents']:
+        if category['categories']['title'] == title:
+            return jsonify(drinks=category['categories']['drinks'])
+    return jsonify(error='Category not found'), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)

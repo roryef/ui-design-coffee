@@ -67,3 +67,67 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 });
+
+function toggleDrinks(element, title) {
+   
+    if (!element.drinksData) {
+        fetch('/get-category-drinks?title=' + encodeURIComponent(title))
+        .then(response => response.json())
+        .then(data => {
+            element.drinksData = data.drinks; 
+            displayIngredients(element);
+        })
+        .catch(error => {
+            console.error('Error fetching drinks:', error);
+        });
+    } else {
+        if (element.isShowingIngredients) {
+            displayDrinkName(element, title);
+        } else {
+            displayIngredients(element);
+        }
+    }
+}
+
+function displayDrinkName(element, title) {
+
+    element.innerHTML = '';
+    element.isShowingIngredients = false;
+
+    element.textContent = title;
+    element.classList.add('category-card');
+    element.classList.remove('drink-container');
+}
+
+function displayIngredients(element) {
+    element.innerHTML = '';
+    element.isShowingIngredients = true;
+
+    element.classList.remove('category-card');
+    element.classList.add('drink-container');
+
+    // Display the ingredients
+    element.drinksData.forEach(drink => {
+        const drinkDiv = document.createElement('div');
+        drinkDiv.classList.add('drink-name');
+
+        const drinkName = document.createElement('p');
+        drinkName.textContent = drink.name;
+        drinkDiv.appendChild(drinkName);
+
+        const ingredientsList = document.createElement('ul');
+        ingredientsList.classList.add('ingredients-list');
+        
+        drink.ingredients.forEach(ingredientArray => {
+            const ingredientItem = document.createElement('li');
+            ingredientItem.classList.add('ingredient');
+            const ingredientName = ingredientArray[0];
+            const ingredientQuantity = ingredientArray[1];
+            ingredientItem.textContent = `${ingredientName} x${ingredientQuantity}`;
+            ingredientsList.appendChild(ingredientItem);
+        });
+
+        drinkDiv.appendChild(ingredientsList);
+        element.appendChild(drinkDiv);
+    });
+}
