@@ -48,6 +48,36 @@ user_data = {
         },
     }
 }
+
+legend = {
+    [
+        {
+           "name": "Foam",
+           "image": "./media/legend/foam.png" 
+        },
+        {
+            "name": "Steamed Milk",
+            "image": "./media/legend/milk.png"
+        },
+                {
+            "name": "Cocoa",
+            "image": "./media/legend/cocoa.png"
+        },
+        {
+            "name": "Syrup",
+            "image": "./media/legend/syrup.png"  
+        },
+                {
+            "name": "Water",
+            "image": "./media/legend/water.png"  
+        },
+        {
+            "name": "Espresso",
+            "image": "./media/legend/espresso.png"  
+        },
+    ]
+}
+
 home_data = {
     "title": "<span class='highlight'>Welcome!</span> You will learn how to <span class='highlight'>Distinguish Coffee</span> today!",
     "buttons": [
@@ -664,7 +694,7 @@ def home():
 
 @app.route('/learn/<page_number>', methods=['GET'])
 def learn(page_number):
-    return render_template("lesson.html", lesson=lessons[page_number], lesson_metadata=lesson_metadata)
+    return render_template("lesson.html", lesson=lessons[page_number], lesson_metadata=lesson_metadata, legend=legend)
 
 @app.route('/learn/<page_number>/update', methods=['POST'])
 def update_lesson(page_number):
