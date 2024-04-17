@@ -59,6 +59,9 @@
             {% if lesson.previous %}
                 <a href="{{ url_for('learn', page_number=lesson.previous) }}">Previous</a>
             {% endif %}
+            {% if lesson.next %}
+                <a href="{{ url_for('quiz_question', question_id=1) }}">Quiz</a>
+            {% endif %}
         </nav>
     </div>
 </div>
