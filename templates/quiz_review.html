@@ -19,8 +19,20 @@
                     <p>Question {{ q.id }}: {{ q.question }}</p>
                     
                     {% if user_data.quiz.answers[q.id].answered %}
-                        <p>Selected Option: {{ q.options[((user_data.quiz.answers[q.id].selected_option | int) - 1)].text }}</p>
+                        {% set selected_option_index = (user_data.quiz.answers[q.id].selected_option | int) - 1 %}
+                        {% set selected_option = q.options[selected_option_index] %}
+                    
+                        <p>Selected Option: {{ selected_option.text }}</p>
+                        {% if 'image_url' in selected_option %}
+                            <img src="{{ url_for('static', filename=selected_option.image_url) }}" alt="{{ selected_option.text }}">
+                        {% endif %}
+
                         <p>Correct Option: {{ q.options[q.correct_answer - 1].text }}</p>
+                        
+                        {% if 'image_url' in  q.options[q.correct_answer - 1] %}
+                            <img src="{{ url_for('static', filename=q.options[q.correct_answer - 1].image_url) }}" alt="{{ q.options[q.correct_answer - 1].text }}">
+                        {% endif %}
+
                     {% else %}
                         <p>Not answered</p>
                     {% endif %}
