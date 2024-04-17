@@ -275,3 +275,9 @@ header {
 .drink strong {
     color: #333;
 }
+
+/* Quiz styles */
+.quiz-image {
+    max-width: 50%;
+    height: auto;
+}

@@ -36,7 +36,7 @@
             <div class="col-md-12">
                 <h2>{{ question.id }}. {{ question.question }}</h2>
                 {% if 'question_img' in question %}
-                <img src="{{ url_for('static', filename=question.question_img) }}" alt="Question Image">
+                <img src="{{ url_for('static', filename=question.question_img) }}" alt="Question Image" class="quiz-image">
                 {% endif %}
             </div>
         </div>
@@ -57,7 +57,7 @@
                         <p>{{ option.text }}</p>
                         {% endif %}
                         <input type="radio" id="{{ option.id }}" name="answer" value="{{ option.id }}">
-                        <label for="{{ option.id }}"><img src="{{ url_for('static', filename=option.image_url) }}" alt="{{ option.text }}"></label>
+                        <label for="{{ option.id }}"><img src="{{ url_for('static', filename=option.image_url) }}" alt="{{ option.text }}" class="quiz-image"></label>
                     </div>
                     {% endfor %}
                     <!-- Add hidden input fields for correct answer and correct image URL -->
@@ -86,7 +86,5 @@
     
 
 </div>
-
-
 
 {% endblock %}
