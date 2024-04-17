@@ -841,7 +841,10 @@ def update_lesson(page_number):
 
 @app.route('/quiz/<int:question_id>', methods=['GET'])
 def quiz_question(question_id):
-
+    if question_id == 1:
+        # Reset the quiz score to 0
+        user_data["quiz"]["score"] = 0
+        
     question_data = quiz["questions"][question_id - 1]
     question_metadata = quiz_metadata["questions"]
 
