@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="sidebar">
-    <h3>Lesson Pages</h3>
+    <h3>Lessons</h3>
     <ul>
         {% for key, value in lesson_metadata.contents.items() if key != 'quiz' %}
             <li {% if key == lesson.id %}class="active"{% endif %}>
