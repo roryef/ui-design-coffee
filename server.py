@@ -845,6 +845,19 @@ def quiz_question(question_id):
         # Reset the quiz score to 0
         user_data["quiz"]["score"] = 0
         
+        # Reset all answers and their attributes
+        user_data["quiz"] = {
+            "completed": False,
+            "score": 0,
+            "answers": {
+                1: {"selected_option": None, "answer_correct": False, "answered": False},
+                2: {"selected_option": None, "answer_correct": False, "answered": False},
+                3: {"selected_option": None, "answer_correct": False, "answered": False},
+                4: {"selected_option": None, "answer_correct": False, "answered": False},
+                5: {"selected_option": None, "answer_correct": False, "answered": False},
+            },
+        }
+        
     question_data = quiz["questions"][question_id - 1]
     question_metadata = quiz_metadata["questions"]
 
