@@ -13,6 +13,9 @@
                 <a href="{{ url_for('quiz_question', question_id=key) }}">Question {{ key }}</a>
             </li>
         {% endfor %}
+        <li>
+            <a href="{{ url_for('quiz_review') }}">Submit</a>
+        </li>
     </ul>
     <div class="legend-section">
         <h3>Legend</h3>
