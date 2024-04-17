@@ -4,11 +4,14 @@
 <div class="sidebar">
     <h3>Lesson Pages</h3>
     <ul>
-        {% for key, value in lesson_metadata.contents.items() %}
+        {% for key, value in lesson_metadata.contents.items() if key != 'quiz' %}
             <li {% if key == lesson.id %}class="active"{% endif %}>
                 <a href="{{ url_for('learn', page_number=key) }}">{{ value }}</a>
             </li>
         {% endfor %}
+        <li>
+            <a href="{{ url_for('quiz_question', question_id=1) }}">Quiz</a>
+        </li>
     </ul>
     <div class="legend-section">
         <h3>Legend</h3>
