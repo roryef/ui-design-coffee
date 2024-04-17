@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="sidebar">
+    <h3>Lesson Pages</h3>
+    <ul>
+        {% for key, value in lesson_metadata.contents.items() %}
+            <li {% if key == lesson.id %}class="active"{% endif %}>
+                <a href="{{ url_for('learn', page_number=key) }}">{{ value }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="legend-section">
+        <h3>Legend</h3>
+        <ul class="legend">
+            {% for item in legend %}
+                <li>
+                    <img src="{{ url_for('static', filename=item.image) }}" class="legend-image" alt="{{ item.name }}">
+                    {{ item.name }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="container">
+        <h1>{{ lesson.name }}</h1>
+        {% for category in lesson.contents %}
+            <div class="review-category-container">
+                <h2>{{ category.categories.title }}</h2>
+                {% if category.categories.notes %}
+                    <ul class="notes">
+                        {% for note in category.categories.notes %}
+                            <li>{{ note }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <h3>Drinks:</h3>
+                <ul>
+                    {% for drink in category.categories.drinks %}
+                        <li class="drink">
+                            <strong>{{ drink.name }}</strong>
+                            <ul class="ingredients">
+                                {% for ingredient, quantity in drink.ingredients %}
+                                    <li>{{ ingredient }} x{{ quantity }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+
+        <nav class="lesson-navigation">
+            {% if lesson.previous %}
+                <a href="{{ url_for('learn', page_number=lesson.previous) }}">Previous</a>
+            {% endif %}
+        </nav>
+    </div>
+</div>
+
+{% endblock %}

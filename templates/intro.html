@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+    <h1>{{ lesson.title }}</h1>
+    <h3>{{ lesson.subtitle }}</h3>
+    <div class="category-container">
+        {% for content in lesson.contents %}
+            <div class="category-card" onclick="toggleDrinks(this, '{{ content.categories.title }}')">
+                {{ content.categories.title }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <nav class="lesson-navigation">
+        {% if lesson.previous %}
+            <a href="{{ url_for('home') }}">Home</a>
+        {% endif %}
+        {% if lesson.next %}
+            <a href="{{ url_for('learn', page_number=lesson.next) }}">Next</a>
+        {% endif %}
+    </nav>
+</div>
+
+{% endblock %}
