@@ -19,7 +19,7 @@
                     <p>Question {{ q.id }}: {{ q.question }}</p>
                     
                     {% if user_data.quiz.answers[q.id].answered %}
-                        <p>Selected Option: {{ user_data.quiz.answers[q.id].selected_option }}</p>
+                        <p>Selected Option: {{ q.options[((user_data.quiz.answers[q.id].selected_option | int) - 1)].text }}</p>
                         <p>Correct Option: {{ q.options[q.correct_answer - 1].text }}</p>
                     {% else %}
                         <p>Not answered</p>
