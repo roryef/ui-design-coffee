@@ -1,3 +1,13 @@
+let start_time = 0;
+let hovered_1 = false;
+let hovered_2 = false;
+let hovered_3 = false;
+let hovered_4 = false;
+
+finished_1 = false;
+finished_2 = false;
+
+
 $(document).ready(function() {
     $('.accordion').click(function() {
         this.classList.toggle("active");
@@ -7,33 +17,110 @@ $(document).ready(function() {
         } else {
             panel.style.display = "block";
         }
+        start_time = new Date().getTime();
     });
 });
 
-function resetDrink(url, ingredients) {
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(ingredients)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        alert('Drink reset successfully!');
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('Failed to reset drink');
-    });
+function sendUserData(direction) {
+    if(lesson.id == "intro") {
+        let end_time = new Date().getTime();
+        let time_spent = end_time - start_time;
+        $.ajax({
+            type: "POST",
+            url: `/learn/update/${lesson.id}/`,
+            data: JSON.stringify({
+                completed: true,
+                time_spent: time_spent,
+                hovered_1: hovered_1,
+                hovered_2: hovered_2,
+                hovered_3: hovered_3,
+                hovered_4: hovered_4,
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(response) {
+                console.log(response); // Log the response from the server
+                if(direction == "next")
+                    window.location.href = "/learn/" + lesson.next + "/";
+                else
+                    window.location.href = "/";
+            },
+            error: function(xhr, status, error) {
+                console.error(error); // Log any errors
+            }
+        });
+    }
+    else if (lesson.id == "review") {
+        end_time = new Date().getTime();
+        time_spent = end_time - start_time;
+        $.ajax({
+            type: "POST",
+            url: `/learn/update/${lesson.id}/`,
+            data: JSON.stringify({
+                completed: true,
+                time_spent: time_spent,
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(response) {
+                console.log(response); // Log the response from the server
+                if(direction == "next")
+                    window.location.href = "/quiz/" + 1;
+                else
+                    window.location.href = "/learn/" + lesson.previous + "/";
+            },
+            error: function(xhr, status, error) {
+                console.error(error); // Log any errors
+            }
+        });
+    }
+    else {
+        if((!finished_1 || !finished_2) && direction == "next" && !completed) {
+            alert("Please finish the drinks before moving on to the next lesson");
+            return;
+        }
+        end_time = new Date().getTime();
+        time_spent = end_time - start_time;
+        $.ajax({
+            type: "POST",
+            url: `/learn/update/${lesson.id}/`,
+            data: JSON.stringify({
+                completed: true,
+                time_spent: time_spent,
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(response) {
+                console.log(response); // Log the response from the server
+                if(direction == "next")
+                    window.location.href = "/learn/" + lesson.next + "/";
+                else
+                    window.location.href = "/learn/" + lesson.previous + "/";
+            },
+            error: function(xhr, status, error) {
+                console.error(error); // Log any errors
+            }
+        });
+    }
 }
+
+function resetDrink(drinkId) {
+    changeSlide(drinkId, 'next');
+}
+
 
 function changeSlide(drinkId, direction) {
     var slides = document.querySelectorAll('[id^="slide-' + drinkId + '-"]');
     var currentSlideIndex = Array.from(slides).findIndex(slide => slide.style.display !== 'none');
     var newSlideIndex = direction === 'next' ? currentSlideIndex + 1 : currentSlideIndex - 1;
-
+    if (newSlideIndex == slides.length-1) {
+        if(drinkId == 1) {
+            finished_1 = true;
+        }
+        if(drinkId == 2) {
+            finished_2 = true;
+        }
+    }
     if (newSlideIndex >= slides.length) newSlideIndex = 0;
     if (newSlideIndex < 0) newSlideIndex = slides.length - 1;
 
@@ -69,12 +156,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function toggleDrinks(element, title) {
-   
     if (!element.drinksData) {
         fetch('/get-category-drinks?title=' + encodeURIComponent(title))
         .then(response => response.json())
         .then(data => {
             element.drinksData = data.drinks; 
+            if(element.drinksData[0].name == "Espresso") {
+                hovered_1 = true;
+            }
+            if(element.drinksData[0].name == "Macchiato") {
+                hovered_2 = true;
+            }
+            if(element.drinksData[0].name == "Cappuccino") {
+                hovered_3 = true;
+            }
+            if(element.drinksData[0].name == "Mocha") {
+                hovered_4 = true;
+            }
             displayIngredients(element);
         })
         .catch(error => {
@@ -84,6 +182,18 @@ function toggleDrinks(element, title) {
         if (element.isShowingIngredients) {
             displayDrinkName(element, title);
         } else {
+            if(element.drinksData[0].name == "Espresso") {
+                hovered_1 = true;
+            }
+            if(element.drinksData[0].name == "Macchiato") {
+                hovered_2 = true;
+            }
+            if(element.drinksData[0].name == "Cappuccino") {
+                hovered_3 = true;
+            }
+            if(element.drinksData[0].name == "Mocha") {
+                hovered_4 = true;
+            }
             displayIngredients(element);
         }
     }

@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
+<script>
+	let lesson = {{ lesson | tojson }};
+	let lesson_metadata = {{ lesson_metadata | tojson }};
+	let legend = {{ legend | tojson }};
+	let ingredients = {{ ingredients | tojson }};
+</script>
 
 <div class="sidebar">
     <h3>Lesson</h3>
@@ -56,12 +62,16 @@
         {% endfor %}
 
         <nav class="lesson-navigation">
-            {% if lesson.previous %}
-                <a href="{{ url_for('learn', page_number=lesson.previous) }}">Previous</a>
-            {% endif %}
-            {% if lesson.next %}
-                <a href="{{ url_for('quiz_question', question_id=1) }}">Quiz</a>
-            {% endif %}
+            <div>
+                {% if lesson.previous %}
+                <a onclick="sendUserData('prev')">Previous</a>
+                {% endif %}
+            </div>
+            <div>
+                {% if lesson.next %}
+                <a onclick="sendUserData('next')">Quiz</a>
+                {% endif %}
+            </div>
         </nav>
     </div>
 </div>

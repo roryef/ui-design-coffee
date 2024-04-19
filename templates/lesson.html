@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
+<script>
+	let lesson = {{ lesson | tojson }};
+	let lesson_metadata = {{ lesson_metadata | tojson }};
+	let legend = {{ legend | tojson }};
+	let ingredients = {{ ingredients | tojson }};
+    let completed = {{ completed | tojson }};
+</script>
 <div class="sidebar">
     <h3>Lessons</h3>
     <ul>
@@ -31,14 +38,16 @@
         {% if lesson.video %}
             <div class="video">
                 <p>{{ lesson.video_header }}</p>
-                <iframe width="560" height="315"
-                    src="{{ lesson.video }}"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-                </iframe>
+                <div class="video-wrapper">
+                    <iframe class="video" width="560" height="315"
+                        src="{{ lesson.video }}"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         {% endif %}
     </div>
@@ -82,12 +91,16 @@
             </div>
         </div>
         <nav class="lesson-navigation">
-            {% if lesson.previous %}
-                <a href="{{ url_for('learn', page_number=lesson.previous) }}">Previous</a>
-            {% endif %}
-            {% if lesson.next %}
-                <a href="{{ url_for('learn', page_number=lesson.next) }}">Next</a>
-            {% endif %}
+            <div>
+                {% if lesson.previous %}
+                <a onclick="sendUserData('prev')">Previous</a>
+                {% endif %}
+            </div>
+            <div>
+                {% if lesson.next %}
+                <a onclick="sendUserData('next')">Next</a>
+                {% endif %}
+            </div>
         </nav>
     </div>
     

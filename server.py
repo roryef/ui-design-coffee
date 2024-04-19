@@ -9,37 +9,26 @@ user_data = {
     "lessons": {
         "intro": {
             "completed": False,
-            "clicked_1": False,
-            "clicked_2": False,
-            "clicked_3": False,
-            "clicked_4": False,
+            "hovered_1": False,
+            "hovered_2": False,
+            "hovered_3": False,
+            "hovered_4": False,
+            "time_spent": 0,
         },
         "1": {
             "completed": False,
-            "clicked_1": False,
-            "clicked_2": False,
-            "watched_video": False,
             "time_spent": 0
         },
         "2": {
             "completed": False,
-            "clicked_1": False,
-            "clicked_2": False,
-            "watched_video": False,
             "time_spent": 0
         },
         "3": {
             "completed": False,
-            "clicked_1": False,
-            "clicked_2": False,
-            "watched_video": False,
             "time_spent": 0
         },
         "4": {
             "completed": False,
-            "clicked_1": False,
-            "clicked_2": False,
-            "watched_video": False,
             "time_spent": 0
         },
         "review": {
@@ -153,6 +142,7 @@ quiz_metadata = {
 
 lessons = {
     "intro": {
+      "id": "intro",
       "title": "The lesson will teach you 4 types of coffee drinks",
       "subtitle": "Click on each category to reveal the drinks",
       "contents": [
@@ -807,7 +797,7 @@ quiz = {
 def home():
     return render_template("home.html", data = home_data)
 
-@app.route('/learn/<page_number>', methods=['GET'])
+@app.route('/learn/<page_number>/', methods=['GET'])
 def learn(page_number):
     if page_number == "intro":
         # Render the intro page
@@ -827,12 +817,12 @@ def learn(page_number):
         # Render other lesson pages
         lesson_data = lessons.get(page_number)
         if lesson_data:
-            return render_template("lesson.html", lesson=lesson_data, lesson_metadata=lesson_metadata, legend=legend, ingredients=ingredients)
+            return render_template("lesson.html", lesson=lesson_data, lesson_metadata=lesson_metadata, legend=legend, ingredients=ingredients, completed=user_data["lessons"][page_number]["completed"])
         else:
             return "Lesson data not found", 404
 
 
-@app.route('/learn/<page_number>/update', methods=['POST'])
+@app.route('/learn/update/<page_number>/', methods=['POST'])
 def update_lesson(page_number):
     user_data["lessons"][page_number] = request.json
     return jsonify(user_data["lessons"][page_number])
