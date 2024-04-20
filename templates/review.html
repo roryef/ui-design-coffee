@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/review.js') }}"></script>
 <script>
 	let lesson = {{ lesson | tojson }};
 	let lesson_metadata = {{ lesson_metadata | tojson }};
@@ -55,6 +56,9 @@
                                     <li>{{ ingredient }} x{{ quantity }}</li>
                                 {% endfor %}
                             </ul>
+                            <div id="{{ drink.name }}" class="drink-image-container" --recipe={{ drink.ingredients }}>
+                                
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>

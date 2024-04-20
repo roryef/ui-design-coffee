@@ -82,6 +82,10 @@ ingredients = [
             "name": "Foam",
             "image": "./media/legend/foam.png"
         },
+        "foam2": {
+            "name": "Foam",
+            "image": "./media/legend/foam2.png"
+        },
         "milk": {
             "name": "Steamed Milk",
             "image": "./media/legend/milk.png"

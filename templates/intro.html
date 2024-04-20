@@ -13,8 +13,7 @@
 		{% for content in lesson.contents %}
 		<div
 			class="category-card"
-			onmouseover="toggleDrinks(this, '{{ content.categories.title }}')"
-			onmouseout="toggleDrinks(this, '{{ content.categories.title }}')">
+			onmouseover="toggleDrinks(this, '{{ content.categories.title }}')">
 			{{ content.categories.title }}
 		</div>
 		{% endfor %}
