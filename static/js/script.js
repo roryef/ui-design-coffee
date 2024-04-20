@@ -179,9 +179,7 @@ function toggleDrinks(element, title) {
             console.error('Error fetching drinks:', error);
         });
     } else {
-        if (element.isShowingIngredients) {
-            displayDrinkName(element, title);
-        } else {
+        if (!element.isShowingIngredients) {
             if(element.drinksData[0].name == "Espresso") {
                 hovered_1 = true;
             }

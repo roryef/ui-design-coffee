@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/lesson.js') }}"></script>
 <script>
 	let lesson = {{ lesson | tojson }};
 	let lesson_metadata = {{ lesson_metadata | tojson }};
@@ -70,7 +71,10 @@
                                         <h3>{{ slide.body }}</h3>
                                     {% elif slide.body_type == 'image' %}
                                         <img src="{{ url_for('static', filename=slide.body) }}" alt="{{ slide.title }}">
-
+                                    {% elif slide.body_type == 'drink' %}
+                                    <div class="drink">
+                                        <div class="drink-image-container" recipe={{ slide.body.ingredients }}></div>
+                                    </div>
                                     {% endif %}
                                 </div>
                             {% endfor %}

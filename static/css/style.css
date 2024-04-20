@@ -297,11 +297,12 @@ header {
     margin: auto;
 }
 
-.ingredient-image {
+img.ingredient-image {
     width: 50px;
     height: 10px;
     display: block;
     margin: auto;
+    margin-bottom: 0px;
 }
 
 .ingredient {
