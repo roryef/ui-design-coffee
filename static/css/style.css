@@ -47,6 +47,14 @@ header {
     text-decoration: none;
 }
 
+.home-button {
+    text-decoration: none;
+}
+
+.home-button:hover {
+    text-decoration: none;
+}
+
 .home-container {
     display: flex;
     flex-direction: column;
