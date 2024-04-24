@@ -13,7 +13,7 @@ header {
     
     background-color: #E1D7CD;
     color: black;
-    padding: 0.5em 0;
+    padding: .75em 0;
     font-family: 'Garamond', serif;
 }
 
@@ -29,6 +29,13 @@ header {
     margin: 0 1em; 
 }
 
+.navbar-link {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+    font-size: 1.2em;
+}
+
 .header-nav a {
     color: black;
     text-decoration: none;
@@ -36,7 +43,16 @@ header {
 }
 
 .header-nav a:hover {
-    color: #ddd; 
+    color: brown;
+    text-decoration: none;
+}
+
+.home-button {
+    text-decoration: none;
+}
+
+.home-button:hover {
+    text-decoration: none;
 }
 
 .home-container {
