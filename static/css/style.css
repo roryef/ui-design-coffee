@@ -361,7 +361,7 @@ img.ingredient-image {
 }
 
 .title {
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px; /* Adjust spacing between title and buttons */
 }
 
