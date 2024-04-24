@@ -348,3 +348,15 @@ img.ingredient-image {
     text-align: center;
     margin-bottom: 20px; /* Adjust spacing between title and buttons */
 }
+
+.title-container {
+    position: relative; /* Position relative for absolute positioning of the image */
+}
+
+.title-image {
+    position: absolute;
+    top: 0;
+    right: 0; /* Align the image to the right */
+    height: 100px; /* Adjust the height of the image */
+    width: auto; /* Maintain aspect ratio */
+}

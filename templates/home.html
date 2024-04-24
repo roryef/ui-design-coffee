@@ -1,10 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="home-container">
-    <h1 class="title">
-        <span class="small-text">Learn How To</span><br>
-        <span class="big-text">Distinguish <span class="coffee-highlight">Coffee</span> Drinks</span>
-    </h1>
+    <div class="title-container">
+        <h1 class="title">
+            <span class="small-text">Learn How To</span><br>
+            <span class="big-text">Distinguish <span class="coffee-highlight">Coffee</span> Drinks</span>
+        </h1>
+        <img src="{{ url_for('static', filename='media/legend/title-coffee.png') }}" alt="Coffee Image" class="title-image">
+    </div>
     <div>
         {% for button in data.buttons %}
         <a href="{{ button.link }}" class="button {{ button.color }}">{{ button.text }}</a>
