@@ -111,15 +111,16 @@ ingredients = [
 
 
 home_data = {
-    "title": "<span class='highlight'>Welcome!</span> You will learn how to <span class='highlight'>Distinguish Coffee</span> today!",
+    "title": "<span class='highlight'>Learn How To</span> Distinguish Coffee Drinks",
     "buttons": [
         {
-            "text": "Learn",
+            "text": "Start Learning",
             "link": "/learn/intro",
         },
         {
-            "text": "Quiz",
+            "text": "Quiz Yourself",
             "link": "/quiz/1",
+            "color": "white",
         }
     ]
 }

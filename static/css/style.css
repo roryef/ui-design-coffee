@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: Garamond, serif;
+    background-color: #E1D7CD;
     margin: 0;
     padding: 0;
 }
@@ -8,9 +8,10 @@ body {
 /* Header style */
 header {
     
-    background-color: #333;
-    color: white;
+    background-color: #E1D7CD;
+    color: black;
     padding: 0.5em 0;
+    font-family: 'Garamond', serif;
 }
 
 .header-nav ul {
@@ -26,7 +27,7 @@ header {
 }
 
 .header-nav a {
-    color: white;
+    color: black;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -307,4 +308,40 @@ img.ingredient-image {
 
 .ingredient {
     margin-top: auto;
+}
+
+.button {
+    /* Common button styles */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.white {
+    /* Styles for blue buttons */
+    background-color: white; /* Blue */
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
+.small-text {
+    font-size: 20px; /* Adjust the size of the smaller text */
+    color: #333; /* Color for the smaller text */
+}
+
+.big-text {
+    font-size: 36px; /* Adjust the size of the bigger text */
+    color: #000; /* Color for the bigger text */
+}
+
+.coffee-highlight {
+    color: #E1D7CD; /* Color for the highlighted word */
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px; /* Adjust spacing between title and buttons */
 }
