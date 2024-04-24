@@ -1,23 +1,37 @@
 {% extends "layout.html" %} {% block content %}
 <div class="home-container">
-    <div class="title-container">
-        <h1 class="title">
-            <span class="small-text">Learn How To</span><br>
-            <span class="big-text"
-			>Distinguish
-			<span class="coffee-highlight">Coffee</span> Drinks</span
-		>
-        </h1>
-        <img src="{{ url_for('static', filename='media/legend/title-coffee.png') }}" alt="Coffee Image" class="title-image">
-    </div>
-    <div>
-		{% for button in data.buttons %}
-		<a
-			href="{{ button.link }}"
-			class="button {{ button.color }} home-button"
-			>{{ button.text }}</a
-		>
-		{% endfor %}
+	<div class="row home-row">
+		<div class="col-6 home-text">
+			<div class="title-container">
+				<div>
+					<h1 class="title">
+						<span class="small-text">Learn How To</span><br />
+						<span class="big-text"
+							>Distinguish
+							<span class="coffee-highlight">Coffee</span>
+							Drinks</span
+						>
+					</h1>
+				</div>
+				<div>
+					{% for button in data.buttons %}
+					<a
+						href="{{ button.link }}"
+						class="button {{ button.color }} home-button"
+						>{{ button.text }}</a
+					>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="col-6">
+			<div class="home-image-container">
+				<img
+					src="{{ url_for('static', filename='media/legend/title-coffee.png') }}"
+					alt="Coffee Image"
+					class="title-image" />
+			</div>
+		</div>
 	</div>
 </div>
 {% endblock %}

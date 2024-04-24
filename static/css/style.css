@@ -66,6 +66,10 @@ header {
     padding: 20px;
 }
 
+.home-row {
+    width: 100%;
+}
+
 .main-content {
     padding-left:220px; 
 }
@@ -367,12 +371,25 @@ img.ingredient-image {
 
 .title-container {
     position: relative; /* Position relative for absolute positioning of the image */
+    margin-left: auto;
+}
+
+.home-image-container {
+    width: 100%;
+    height: 100%;
+    margin-right: auto;
 }
 
 .title-image {
-    position: absolute;
-    top: 0;
-    right: 0; /* Align the image to the right */
-    height: 100px; /* Adjust the height of the image */
-    width: auto; /* Maintain aspect ratio */
+    width: 100%;
+    height: auto;
+}
+
+.home-text {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: flex-end;
 }
