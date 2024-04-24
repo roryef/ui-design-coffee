@@ -361,11 +361,11 @@ img.ingredient-image {
 }
 
 .coffee-highlight {
-    color: #E1D7CD; /* Color for the highlighted word */
+    color: #c98b6f; /* Color for the highlighted word */
 }
 
 .title {
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px; /* Adjust spacing between title and buttons */
 }
 
