@@ -393,3 +393,17 @@ img.ingredient-image {
     justify-content: center;
     align-items: flex-end;
 }
+
+.legend-ingredient {
+    width: 50px;
+    height: 10px;
+    display: block;
+    margin-bottom: 0px;
+}
+
+.legend-ingredient .legend-image {
+    width: 50px;
+    height: 10px;
+    display: block;
+    margin-bottom: 0px;
+}

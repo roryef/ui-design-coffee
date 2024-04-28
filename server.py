@@ -903,6 +903,17 @@ def get_category_drinks():
             return jsonify(drinks=category['categories']['drinks'])
     return jsonify(error='Category not found'), 404
 
+@app.route('/quiz-test', methods=['GET'])
+def quiz_test():
+    return render_template('quiz_test.html', ingredients=ingredients, legend=legend, data={
+        "name": "Mocha",
+        "ingredients": [
+            ("espresso", 2),
+            ("cocoa", 1),
+            ("milk", 3),
+            ("foam", 1)
+        ]
+    })
 
 
 if __name__ == '__main__':

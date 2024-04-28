@@ -1,0 +1,21 @@
+{% extends "layout.html" %} {% block content %}
+<script
+	type="text/javascript"
+	src="{{ url_for('static', filename = 'js/quiz-test.js') }}"></script>
+<script>
+	let legend = {{ legend | tojson }};
+	let ingredients = {{ ingredients | tojson }};
+	let data = {{ data | tojson }};
+</script>
+<h1>Create a {{data.name}}</h1>
+<div id="drink"></div>
+
+<div id="ingredients">
+	<h3>Ingredients</h3>
+	<ul class="legend"></ul>
+</div>
+
+<div id="submit-button">
+	<button id="submit" class="button">Submit</button>
+</div>
+{% endblock %}
