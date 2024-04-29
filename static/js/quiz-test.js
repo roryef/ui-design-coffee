@@ -18,6 +18,17 @@ $( document ).ready(function() {
 		</li>`)
     });
 
+    $("#reset").click(function() {
+        drink_ingredients = [];
+        $("#drink").empty();
+        $("#drink").append(renderDrink(drink_ingredients));
+        $( ".legend-ingredient" ).draggable({ revert: "invalid", helper: "clone" });
+        $( ".ingredients-list" ).droppable({
+            accept: ".legend-ingredient",
+            drop: drop_function
+        });
+    });
+
     $("#submit").click(function() {
         let correct = true;
         if(drink_ingredients.length !== data.ingredients.length) {
