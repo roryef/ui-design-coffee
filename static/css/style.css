@@ -489,6 +489,13 @@ img.ingredient-image {
     width: 50%;
 }
 
+.answer-cell img {
+    max-width: 100%; /* Ensure the image doesn't exceed the cell width */
+    max-height: 100px; /* Set the maximum height of the image */
+    display: block; /* Ensure the image behaves as a block element */
+    margin: auto; /* Center the image horizontally */
+}
+
 .quiz-image-container {
     max-width: 100%;
     max-height: auto; /* Set the maximum height as per your requirement */
