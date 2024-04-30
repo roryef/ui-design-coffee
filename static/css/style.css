@@ -301,7 +301,7 @@ header {
 }
 
 .drink strong {
-    color: #333;
+    color: #777;
 }
 
 /* Quiz styles */
@@ -352,7 +352,7 @@ img.ingredient-image {
 
 .small-text {
     font-size: 20px; /* Adjust the size of the smaller text */
-    color: #333; /* Color for the smaller text */
+    color: #777; /* Color for the smaller text */
 }
 
 .big-text {
@@ -361,7 +361,7 @@ img.ingredient-image {
 }
 
 .coffee-highlight {
-    color: #c98b6f; /* Color for the highlighted word */
+    color:  #ff6a00; /* Color for the highlighted word */
 }
 
 .title {
@@ -406,4 +406,91 @@ img.ingredient-image {
     height: 10px;
     display: block;
     margin-bottom: 0px;
+}
+
+.quiz-review-top {
+    text-align: center;
+}
+
+.score-number {
+    color: #ff6a00;
+}
+
+.quiz-review-title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.quiz-review-conditional-message {
+    font-size: 25px;
+    color: #777;
+
+}
+
+.score-text {
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.quiz-button {
+    text-decoration: none;
+}
+
+.quiz-button:hover {
+    text-decoration: none;
+}
+
+.answer-review-text {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.quiz-container{
+    width: 70%; /* Set your desired width as a percentage */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.question-row {
+    text-align: center;
+    background-color: #E1D7CD;
+    padding-top: 13px;
+    padding-bottom: 10px;
+}
+
+.question-heading {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.question-number {
+    color: #777; /* Set color to #777 */
+    font-weight: normal; /* Remove bold font weight */
+}
+
+.answer-row {
+    text-align: center;
+    /* font-size: 30px; */
+}
+
+
+
+.answer-heading {
+    text-align: center;
+    width: 50%;
+    color: #777;
+}
+
+.answer-cell {
+    text-align: center;
+    width: 50%;
+}
+
+.quiz-image-container {
+    max-width: 100%;
+    max-height: auto; /* Set the maximum height as per your requirement */
+    overflow: hidden;
 }

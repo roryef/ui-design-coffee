@@ -124,6 +124,19 @@ home_data = {
         }
     ]
 }
+quiz_review_data = {
+    "buttons": [
+        {
+            "text": "Review Lessons",
+            "link": "/learn/intro",
+        },
+        {
+            "text": "Retake Quiz",
+            "link": "/quiz/1",
+            "color": "white",
+        }
+    ]
+}
 lesson_metadata = {
  "contents": {
         "1": "1. Black (Espresso)",
@@ -893,7 +906,7 @@ def submit_answer(question_id):
 @app.route('/quiz/review')
 def quiz_review():
     # Pass user_data to the template for rendering
-    return render_template('quiz_review.html', user_data=user_data, quiz=quiz)
+    return render_template('quiz_review.html', user_data=user_data, quiz=quiz, quiz_review_data=quiz_review_data)
 
 @app.route('/get-category-drinks', methods=['GET'])
 def get_category_drinks():
