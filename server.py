@@ -45,6 +45,9 @@ user_data = {
             3: {"selected_option": None, "answer_correct": False, "answered": False},
             4: {"selected_option": None, "answer_correct": False, "answered": False},
             5: {"selected_option": None, "answer_correct": False, "answered": False},
+            6: {"selected_option": None, "answer_correct": False, "answered": False},
+            7: {"selected_option": None, "answer_correct": False, "answered": False},
+            8: {"selected_option": None, "answer_correct": False, "answered": False},
         },
     }
 }
@@ -150,10 +153,14 @@ lesson_metadata = {
 
 quiz_metadata = {
     "questions": {
-        "1": "Question 1: What is the ratio of espresso to steamed milk in a cortado?",
-        "2": "Question 2: What goes in a mocha?",
-        "3": "Question 3: Select the image that corresponds to 'latte'.",
-        "4": "Question 4: Select the final product.",
+        "1": "Question 1: Select the image that corresponds to 'latte",
+        "2": "Question 2: Select the final product",
+        "3": "Question 3: Drag and drop the ingredients to make an Espresso.",
+        "4": "Question 4: Drag and drop the ingredients to make a Cortado.",
+        "5": "Question 5: Drag and drop the ingredients to make a Macchiato.",
+        "6": "Question 6: Drag and drop the ingredients to make a (Syrup) Latte.",
+        "7": "Question 7: Drag and drop the ingredients to make a Cappuccino.",
+        "8": "Question 8: Drag and drop the ingredients to make a Mocha.",
         "review": "Review"
     }
 }
@@ -743,12 +750,8 @@ lessons = {
     }
 }
 
-quiz = {
-    "id": "quiz",
-    "name": "Quiz",
-    "questions": [
-    {
-        "id": 1,
+lesson_quiz = {
+    "2": {
         "question": "What is the ratio of espresso to steamed milk in a cortado?",
         "options": [
             {"id": 1, "text": "1:1"},
@@ -758,10 +761,8 @@ quiz = {
             {"id": 5, "text": "1:5"}
         ],
         "correct_answer": 1,
-        "next": 2,
     },
-    {
-        "id": 2,
+    "4": {
         "question": "What goes in a mocha?",
         "options": [
             {"id": 1, "text": "Espresso"},
@@ -771,40 +772,141 @@ quiz = {
             {"id": 5, "text": "Espresso + steamed milk + foam + chocolate"}
         ],
         "correct_answer": 5,
+    },
+}
+
+quiz = {
+    "id": "quiz",
+    "name": "Quiz",
+    "questions": [
+    {
+        "id": 1,
+        "question": "Select the image that corresponds to 'latte.'",
+        "question_type": "drink_selection",
+        "options": [
+            {"id": 1, "text": "Espresso",
+                "ingredients": [
+                    ("espresso", 1)
+                ]
+            },
+            {"id": 2, "text": "Latte",
+                            "ingredients": [
+                                ("espresso", 2),
+                                ("milk", 3),
+                                ("foam", 1)
+                            ]},
+            {"id": 3, "text": "Cappuccino", "ingredients": [
+                                ("espresso", 2),
+                                ("milk", 2),
+                                ("foam", 2)
+                            ]},
+            {"id": 4, "text": "Americano", "ingredients": [
+                                ("espresso", 2),
+                                ("water", 2)
+                            ]}
+        ],
+        "correct_answer": 2,
+        "next": 2,
+    },
+    {
+        "id": 2,
+        "question": "Select the final product",
+        "question_img": "/media/quiz/4_question.png",
+        "question_type": "drink_selection",
+        "options": [
+            {"id": 1, "text": "Mocha", "ingredients": [
+                                ("espresso", 2),
+                                ("cocoa", 1),
+                                ("milk", 3),
+                                ("foam", 1)
+                            ]},
+            {"id": 2, "text": "Cappuccino", "ingredients": [
+                                ("espresso", 2),
+                                ("milk", 2),
+                                ("foam", 2)
+                            ]},
+            {"id": 3, "text": "Macchiato",  "ingredients": [
+                                ("espresso", 2),
+                                ("milk", 1)
+                            ]},
+            {"id": 4, "text": "Americano",  "ingredients": [
+                                ("espresso", 2),
+                                ("water", 2)
+                            ]}
+        ],
+        "correct_answer": 4,
         "next": 3,
         "previous": 1
     },
     {
         "id": 3,
-        "question": "Select the image that corresponds to 'latte.'",
-        "options": [
-            {"id": 1, "text": "Espresso", "image_url": "./media/quiz/Espresso.png"},
-            {"id": 2, "text": "Latte", "image_url": "./media/quiz/Latte.png"},
-            {"id": 3, "text": "Cappuccino", "image_url": "./media/quiz/Cappuccino.png"},
-            {"id": 4, "text": "Americano", "image_url": "./media/quiz/Americano.png"}
+        "question": "Drag and drop the ingredients to make an ",
+        "text": "Espresso",
+        "correct_answer": [
+            ("espresso", 1)
         ],
-        "correct_answer": 2,
         "next": 4,
         "previous": 2
     },
     {
-        "id": 4,
-        "question": "Select the final product",
-        "question_img": "/media/quiz/4_question.png",
-        "options": [
-            {"id": 1, "text": "Mocha", "image_url": "./media/quiz/Mocha.png"},
-            {"id": 2, "text": "Cappuccino", "image_url": "./media/quiz/Cappuccino.png"},
-            {"id": 3, "text": "Macchiato", "image_url": "./media/quiz/Macchiato.png"},
-            {"id": 4, "text": "Americano", "image_url": "./media/quiz/Americano.png"}
+        "question": "Drag and drop the ingredients to make a ",
+        "text": "Cortado",
+        "correct_answer": [
+            ("espresso", 2),
+            ("milk", 2)
         ],
-        "correct_answer": 4,
+        "id": 4,
         "next": 5,
         "previous": 3
     },
     {
+        "question": "Drag and drop the ingredients to make a ",
+        "text": "Macchiato",
+        "correct_answer": [
+            ("espresso", 2),
+            ("milk", 1)
+        ],
         "id": 5,
-        "next": "Review",
+        "next": 6,
         "previous": 4
+    },
+    {
+        "question": "Drag and drop the ingredients to make a ",
+        "text": "(Syrup) Latte",
+        "correct_answer": [
+            ("espresso", 2),
+            ("syrup", 1),
+            ("milk", 3),
+            ("foam", 1)
+        ],
+        "id": 6,
+        "next": 7,
+        "previous": 5
+    },
+    {
+        "question": "Drag and drop the ingredients to make a ",
+        "text": "Cappuccino",
+        "correct_answer": [
+            ("espresso", 2),
+            ("milk", 2),
+            ("foam", 2)
+        ],
+        "id": 7,
+        "next": 8,
+        "previous": 6
+    },
+    {
+        "question": "Drag and drop the ingredients to make a ",
+        "text": "Mocha",
+        "correct_answer": [
+            ("espresso", 2),
+            ("cocoa", 1),
+            ("milk", 3),
+            ("foam", 1)
+        ],
+        "id": 8,
+        "next": 9,
+        "previous": 7
     }
     ]
 
@@ -863,16 +965,23 @@ def quiz_question(question_id):
                 3: {"selected_option": None, "answer_correct": False, "answered": False},
                 4: {"selected_option": None, "answer_correct": False, "answered": False},
                 5: {"selected_option": None, "answer_correct": False, "answered": False},
+                6: {"selected_option": None, "answer_correct": False, "answered": False},
+                7: {"selected_option": None, "answer_correct": False, "answered": False},
+                8: {"selected_option": None, "answer_correct": False, "answered": False},
             },
         }
-        
+    if(question_id == 9):
+        return redirect('/quiz/review')
+    print(question_id, quiz["questions"][question_id - 1])
     question_data = quiz["questions"][question_id - 1]
     question_metadata = quiz_metadata["questions"]
 
     if question_id in [1, 2]:
-        template_name = "quiz_mc.html"
-    elif question_id in [3, 4]:
         template_name = "quiz_mc_img.html"
+    elif question_id in [3,4,5,6,7,8]:
+        template_name = "quiz_drag.html"
+    else:
+        return redirect('/quiz/review')
     
     if question_data.get("next") == "Review":
         # Redirect to the review page
@@ -902,7 +1011,6 @@ def submit_answer(question_id):
 
     return jsonify(correct=answer_correct)
 
-
 @app.route('/quiz/review')
 def quiz_review():
     # Pass user_data to the template for rendering
@@ -915,18 +1023,6 @@ def get_category_drinks():
         if category['categories']['title'] == title:
             return jsonify(drinks=category['categories']['drinks'])
     return jsonify(error='Category not found'), 404
-
-@app.route('/quiz-test', methods=['GET'])
-def quiz_test():
-    return render_template('quiz_test.html', ingredients=ingredients, legend=legend, data={
-        "name": "Mocha",
-        "ingredients": [
-            ("espresso", 2),
-            ("cocoa", 1),
-            ("milk", 3),
-            ("foam", 1)
-        ]
-    })
 
 
 if __name__ == '__main__':

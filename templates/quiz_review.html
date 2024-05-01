@@ -1,79 +1,100 @@
-{% extends "layout.html" %}
-
-{% block content %}
+{% extends "layout.html" %} {% block content %}
+<script
+	type="text/javascript"
+	src="{{ url_for('static', filename = 'js/quiz-review.js') }}"></script>
+<script>
+	let user_data = {{ user_data | tojson }};
+	let quiz = {{ quiz | tojson }};
+</script>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 quiz-review-top">
-            <div class="quiz-review-title">Quiz Review</div>
-            <div class="quiz-review-conditional-message">
-            {% if user_data.quiz.score > 3 %}
-                <p>Congratulations! You have completed the quiz!</p>
-            {% else %}
-                <p>Try learning the materials again.</p>
-            {% endif %}
-            </div>
-            <div class="score-text">Score: <span class="score-number">{{ user_data.quiz.score }}</span> / 4</div>
-            <div>
-                {% for button in quiz_review_data.buttons %}
-                <a
-                    href="{{ button.link }}"
-                    class="button {{ button.color }} quiz-button"
-                    >{{ button.text }}</a
-                >
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="answer-review-text">Answers</div>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-12 quiz-review-top">
+			<div class="quiz-review-title">Quiz Review</div>
+			<div class="quiz-review-conditional-message">
+				{% if user_data.quiz.score > 7 %}
+				<p>Congratulations! You have completed the quiz!</p>
+				{% else %}
+				<p>Try learning the materials again.</p>
+				{% endif %}
+			</div>
+			<div class="score-text">
+				Score:
+				<span class="score-number">{{ user_data.quiz.score }}</span> / 8
+			</div>
+			<div>
+				{% for button in quiz_review_data.buttons %}
+				<a
+					href="{{ button.link }}"
+					class="button {{ button.color }} quiz-button"
+					>{{ button.text }}</a
+				>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="answer-review-text">Answers</div>
+		</div>
+	</div>
 
-    <div class="quiz-container">
-        {% for q in quiz.questions if q.id != 5 %}
-        <div class="question-row row">
-            <div class="col-md-12">
-                <h3 class="question-heading"><span class="question-number">Q{{ q.id }}</span>. {{ q.question }}</h3>
-            </div>
-        </div>
-        <div class="answer-row row">
-            <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="answer-heading">Your Answer</th>
-                            <th class="answer-heading">Correct Answer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="answer-cell">
-                                {% if user_data.quiz.answers[q.id].answered %}
-                                    {% set selected_option_index = (user_data.quiz.answers[q.id].selected_option | int) - 1 %}
-                                    {% set selected_option = q.options[selected_option_index] %}
-                                    <p>{{ selected_option.text }}</p>
-                                    {% if 'image_url' in selected_option %}
-                                        <img src="{{ url_for('static', filename=selected_option.image_url) }}" alt="{{ selected_option.text }}">
-                                    {% endif %}
-                                {% else %}
-                                    <p>Not answered</p>
-                                {% endif %}
-                            </td>
-                            <td class="answer-cell">
-                                <p>{{ q.options[q.correct_answer - 1].text }}</p>
-                                {% if 'image_url' in  q.options[q.correct_answer - 1] %}
-                                    <img src="{{ url_for('static', filename=q.options[q.correct_answer - 1].image_url) }}" alt="{{ q.options[q.correct_answer - 1].text }}">
-                                {% endif %}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-        
+	<div class="quiz-container">
+		{% for q in quiz.questions if q.id %}
+		<div class="question-row row">
+			<div class="col-md-12">
+				<h3 class="question-heading">
+					<span class="question-number">Q{{ q.id }}</span>. {{
+					q.question }}
+				</h3>
+			</div>
+		</div>
+		<div class="answer-row row">
+			<div class="col-md-12">
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="answer-heading">Your Answer</th>
+							<th class="answer-heading">Correct Answer</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="answer-cell">
+								{% if (q.id == 1 or q.id==2) and
+								user_data.quiz.answers[q.id].answered %} {% set
+								selected_option_index =
+								(user_data.quiz.answers[q.id].selected_option |
+								int) - 1 %} {% set selected_option =
+								q.options[selected_option_index] %}
+								<p>{{ selected_option.text }}</p>
+								{% if 'image_url' in selected_option %}
+								<img
+									src="{{ url_for('static', filename=selected_option.image_url) }}"
+									alt="{{ selected_option.text }}" />
+								{% endif %} {% else %} {% if q.id > 2 %}
+
+								<div class="user-answer-drink"></div>
+								{% endif %} {% endif %} {% if not
+								user_data.quiz.answers[q.id].answered %}
+								<p>Not answered</p>
+								{% endif %}
+							</td>
+							<td class="answer-cell">
+								{% if (q.id == 1 or q.id==2) %}
+								<p>
+									{{ q.options[q.correct_answer - 1].text }}
+								</p>
+								{% else %}
+								<div class="answer-drink"></div>
+								{% endif %}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 </div>
 
 {% endblock %}

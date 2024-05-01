@@ -1,10 +1,12 @@
-{% extends "layout.html" %}
-{% block content %}
-<script type="text/javascript" src="{{ url_for('static', filename = 'js/quiz_mc_img.js') }}"></script>
+{% extends "layout.html" %} {% block content %}
+<script
+	type="text/javascript"
+	src="{{ url_for('static', filename = 'js/quiz-drag.js') }}"></script>
 <script>
-    let question = {{ question | tojson }};
+	let legend = {{ legend | tojson }};
+	let ingredients = {{ ingredients | tojson }};
+	let question = {{ question | tojson }};
 </script>
-
 <div class="sidebar">
     <h3>Progress</h3>
     <ul>
@@ -34,7 +36,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ question.id }}. {{ question.question }}</h2>
+                <h2>{{ question.id }}. {{ question.question }} <span class="coffee-highlight">{{ question.text }}</span>.</h2>
                 {% if 'question_img' in question %}
                 <img src="{{ url_for('static', filename=question.question_img) }}" alt="Question Image" class="quiz-image">
                 {% endif %}
@@ -49,24 +51,18 @@
     
         <div class="row">
             <div class="col-md-12">
-                <form id="quiz-form">
-                    {% for option in question.options %}
-                    <div class="option">
-                        <p>{{ option.id }})</p>
-                        {% if 'question_img' in question %}
-                        <p>{{ option.text }}</p>
-                        {% endif %}
-                        <input type="radio" id="{{ option.id }}" name="answer" value="{{ option.id }}" >
-                        <div class="img-label"></div>
-                        <label for="{{ option.id }}"></label>
-                    </div>
-                    {% endfor %}
-                    <!-- Add hidden input fields for correct answer and correct image URL -->
-                    <input type="hidden" id="correct-answer" value="{{ question.correct_answer }}">
-                    
-                    <button type="submit" id="submit-button">Submit</button>
-                </form>
-            </div>
+				<div id="drink"></div>
+					<div id="ingredients">
+						<h3>Ingredients</h3>
+						<ul class="ingredients-legend"></ul>
+					</div>
+					<div id="reset-button">
+						<button id="reset" class="btn btn-secondary">Reset</button>
+					</div>
+					<div id="submit-button">
+						<button id="submit" class="btn btn-primary">Submit</button>
+					</div>
+			</div>
         </div>
         <div class="navigation">
             <nav class="quiz-navigation">
@@ -83,9 +79,5 @@
             </nav>
         </div>
     </div>
-
-    
-
 </div>
-
 {% endblock %}

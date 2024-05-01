@@ -218,10 +218,17 @@ header {
     margin-top: 10px;
 }
 
-.legend {
+.legend, .ingredients-legend{
     list-style: none;
     padding: 0;
     background-color:#ffffff;
+    margin-left: 0px;
+}
+
+.ingredients-legend li {
+    display: inline-block;
+    margin-left: 20px;
+    text-align: center;
 }
 
 .legend li {
@@ -327,6 +334,9 @@ header {
     padding: 0px 5px 10px 5px;
     width: 60px;
     height: 115px;
+}
+
+.drink-image-container .ingredients-list, .answer-drink .ingredients-list, .user-answer-drink .ingredients-list {
     margin: auto;
 }
 
@@ -408,6 +418,8 @@ img.ingredient-image {
     height: 10px;
     display: block;
     margin-bottom: 0px;
+    margin: auto;
+    cursor: pointer;
 }
 
 .legend-ingredient .legend-image {
@@ -509,4 +521,8 @@ img.ingredient-image {
     max-width: 100%;
     max-height: auto; /* Set the maximum height as per your requirement */
     overflow: hidden;
+}
+
+.bold {
+    font-weight: bold;
 }

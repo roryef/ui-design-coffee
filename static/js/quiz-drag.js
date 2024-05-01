@@ -1,12 +1,76 @@
 let drink_ingredients = []
 
+function formatFeedback() {
+    let feedback = '<p class="text-danger">Incorrect. The correct answer is: '
+    question.correct_answer.forEach((ingredient, i) => {
+        feedback += ingredient[1] + " " + ingredient[0] + ", ";
+    })
+    feedback = feedback.slice(0, -2);
+    feedback += '</p>';
+    return feedback;
+}
+
+function addContent() {
+    event.preventDefault(); // Prevent default form submission
+
+    // Disable the submit button
+    $("#submit-button").prop("disabled", true);
+    $("#submit").prop("disabled", true);
+
+    // Clear previous feedback
+    $("#feedback").empty();
+
+    let correctAnswer = question.correct_answer;
+    let questionId = question.id; // Access question ID directly from the question object
+
+    // Log selected option
+    console.log('Selected option:', drink_ingredients);
+
+    // Compare selected option's ID with correct answer's ID
+    let correct = true;
+    if(drink_ingredients.length !== question.correct_answer.length) {
+        $("#feedback").append(formatFeedback());
+        correct = false;
+    }
+    else {
+        drink_ingredients.forEach((ingredient, i) => {
+            if (ingredient[0] !== question.correct_answer[i][0] || ingredient[1] !== question.correct_answer[i][1]) {
+                correct = false;
+            }
+        })
+        if (correct) {
+            $("#feedback").append('<p class="text-success">Correct!</p>');
+        }
+        else {
+            $("#feedback").append(formatFeedback());
+        }
+    }
+
+    // Send data to the server using AJAX
+    $.ajax({
+        type: "POST",
+        url: "/submit-answer/" + questionId,
+        data: {
+            questionId: questionId,
+            selectedOption: JSON.stringify(drink_ingredients),
+            correctAnswer: JSON.stringify(correctAnswer)
+        },
+        success: function(response) {
+            console.log(response); // Log the response from the server
+        },
+        error: function(xhr, status, error) {
+            console.error(error); // Log any errors
+        }
+    });
+}
+
 $( document ).ready(function() {
     $("#drink").append(renderDrink(drink_ingredients));
 
     legend.forEach(ingredient => {
         const imageName = ingredient.image.split("/").pop();
         ingredient.image = `/static/media/legend/${imageName}`;
-		$(".legend").append(`<li>
+		$(".ingredients-legend").append(`<li>
 			<div class="legend-ingredient" ondragover="allowDrop(event)">
                 <img
                     src="${ingredient.image}"
@@ -30,39 +94,7 @@ $( document ).ready(function() {
     });
 
     $("#submit").click(function() {
-        let correct = true;
-        if(drink_ingredients.length !== data.ingredients.length) {
-            alert("Incorrect! Try again.");
-            drink_ingredients = [];
-            $("#drink").empty();
-            $("#drink").append(renderDrink(drink_ingredients));
-            correct = false;
-            $( ".legend-ingredient" ).draggable({ revert: "invalid", helper: "clone" });
-            $( ".ingredients-list" ).droppable({
-                accept: ".legend-ingredient",
-                drop: drop_function
-            });
-            return;
-        }
-        drink_ingredients.forEach((ingredient, i) => {
-            if (ingredient[0] !== data.ingredients[i][0] || ingredient[1] !== data.ingredients[i][1]) {
-                correct = false;
-            }
-        })
-        if (correct) {
-            alert("Correct!");
-        }
-        else {
-            alert("Incorrect! Try again.");
-            drink_ingredients = [];
-            $("#drink").empty();
-            $("#drink").append(renderDrink(drink_ingredients));
-            $( ".legend-ingredient" ).draggable({ revert: "invalid", helper: "clone" });
-                $( ".ingredients-list" ).droppable({
-                    accept: ".legend-ingredient",
-                    drop: drop_function
-                });
-        }
+        addContent();
     });
 
     $( ".legend-ingredient" ).draggable({ revert: "invalid", helper: "clone" });
