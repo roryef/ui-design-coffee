@@ -48,8 +48,16 @@ header {
 }
 
 .home-button {
-    text-decoration: none;
+    flex: 1; /* Allows each button to grow and take up equal space */
+    text-align: center; /* Center the text inside the button */
+    padding: 10px 15px; /* Adjusts padding for better visuals */
+    margin: 0 5px; /* Gives a little space between the buttons */
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Inherits text color from parent */
+    background-color: #007bff; /* Example background color */
+    border-radius: 5px; /* Rounds the corners of the buttons */
 }
+
 
 .home-button:hover {
     text-decoration: none;
@@ -356,7 +364,7 @@ img.ingredient-image {
 }
 
 .big-text {
-    font-size: 36px; /* Adjust the size of the bigger text */
+    font-size: 60px; /* Adjust the size of the bigger text */
     color: #000; /* Color for the bigger text */
 }
 
@@ -369,9 +377,9 @@ img.ingredient-image {
     margin-bottom: 20px; /* Adjust spacing between title and buttons */
 }
 
-.title-container {
-    position: relative; /* Position relative for absolute positioning of the image */
-    margin-left: auto;
+.title-container > div:last-child {
+    display: flex; /* Makes the container a flex container */
+    justify-content: space-between; /* Distributes space evenly around items */
 }
 
 .home-image-container {
