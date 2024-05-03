@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ question.id }}. {{ question.question }}</h2>
+                <div class="quiz-prompt"><span class="prefix">Q{{ question.id }}.</span> {{ question.question }}</div>
                 {% if 'question_img' in question %}
                 <img src="{{ url_for('static', filename=question.question_img) }}" alt="Question Image" class="quiz-image">
                 {% endif %}
@@ -48,26 +48,27 @@
         </div>
     
         <div class="row">
-            <div class="col-md-12">
-                <form id="quiz-form">
-                    {% for option in question.options %}
-                    <div class="option">
-                        <p>{{ option.id }})</p>
-                        {% if 'question_img' in question %}
-                        <p>{{ option.text }}</p>
-                        {% endif %}
-                        <input type="radio" id="{{ option.id }}" name="answer" value="{{ option.id }}" >
-                        <div class="img-label"></div>
-                        <label for="{{ option.id }}"></label>
+            {% for option in question.options %}
+            <div class="col-md-3">
+                <div class="option">
+                    <p>{{ option.id }})</p>
+                    {% if 'question_img' in question %}
+                    <p>{{ option.text }}</p>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-2">
+                            <input type="radio" id="{{ option.id }}" name="answer" value="{{ option.id }}">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="img-label"></div>
+                        </div>
                     </div>
-                    {% endfor %}
-                    <!-- Add hidden input fields for correct answer and correct image URL -->
-                    <input type="hidden" id="correct-answer" value="{{ question.correct_answer }}">
-                    
-                    <button type="submit" id="submit-button">Submit</button>
-                </form>
+                </div>
             </div>
+            {% endfor %}
         </div>
+        
+        
         <div class="navigation">
             <nav class="quiz-navigation">
                 {% if question.next == "Review" %}

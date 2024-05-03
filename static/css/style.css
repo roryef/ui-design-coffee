@@ -526,3 +526,13 @@ img.ingredient-image {
 .bold {
     font-weight: bold;
 }
+
+.quiz-prompt {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.quiz-prompt .prefix {
+    color: #777;
+}
