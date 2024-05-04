@@ -9,9 +9,9 @@ function addContent() {
     // Clear previous feedback
     $("#feedback").empty();
 
-    let selectedOption = $('input[name="answer"]:checked').val(); // Get selected option
+    let selectedOption = Number($('input[name="answer"]:checked').val()); // Get selected option
 
-    let correctAnswer = $('#correct-answer').val();
+    let correctAnswer = Number(question.correct_answer);
     let questionId = question.id; // Access question ID directly from the question object
 
 
