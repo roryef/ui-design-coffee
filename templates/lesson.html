@@ -63,7 +63,7 @@
                                     {% if slide.title_type== 'text' %}
                                         <h2>{{slide.title}}</h2>
                                     {% elif slide.title_type == 'button' %}
-                                        <button onclick="resetDrink({{ drink.drink_id }})">{{ slide.title }}</button>
+                                        <button class="reset-button" onclick="resetDrink({{ drink.drink_id }})">{{ slide.title }}</button>
                                     {% endif %}
                                     {% if slide.body_type == 'text' %}
                                         <h3>{{ slide.body }}</h3>

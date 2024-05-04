@@ -153,7 +153,7 @@ lesson_metadata = {
 
 quiz_metadata = {
     "questions": {
-        "1": "Question 1: Select the image that corresponds to a latte:",
+        "1": "Question 1: Select the image that corresponds to a Latte.",
         "2": "Question 2: Select the final product.",
         "3": "Question 3: Drag and drop the ingredients to make an Espresso.",
         "4": "Question 4: Drag and drop the ingredients to make a Cortado.",
@@ -781,7 +781,7 @@ quiz = {
     "questions": [
     {
         "id": 1,
-        "question": "Select the image that corresponds to a latte:",
+        "question": "Select the image that corresponds to a Latte.",
         "question_type": "drink_selection",
         "options": [
             {"id": 1, "text": "Espresso",

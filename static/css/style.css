@@ -298,6 +298,20 @@ header {
     padding-left: 20px;
 }
 
+.reset-button {
+    margin-left: 7px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+}
+
+#submit-button {
+    cursor: pointer;
+}
+
 
 .review-category-container {
     padding-left: 220px;
