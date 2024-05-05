@@ -7,16 +7,38 @@ $(document).ready(function() {
     $(".answer-drink").each(function(i, obj) {
         obj.append(answer_drinks[i]);
     });
+
     console.log(user_data.quiz.answers);
     for (const [key, data] of Object.entries(user_data.quiz.answers)) {
-        data.selected_option = JSON.parse(data.selected_option)
-        user_drinks[key] = createDrink(data.selected_option)
-    };
-    $(".user-answer-drink").each(function(i, obj) {
-        if (user_drinks[i+3] !== undefined) {
-            obj.append(user_drinks[i+3]);
+        if (data.answered === false) {
+            continue;
+        } else if (parseInt(key) <= 2) {
+            data.selected_option = JSON.parse(data.selected_option);
+            const correctQuestion = quiz.questions.find(q => q.id === parseInt(key));
+            if (correctQuestion) {
+                const selectedOptionId = data.selected_option;
+                const selectedOption = correctQuestion.options.find(option => option.id === selectedOptionId);
+                if (selectedOption) {
+                    const selectedIngredients = selectedOption.ingredients;
+                    user_drinks[key] = createDrink(selectedIngredients);
+                    console.log(selectedIngredients);
+
+                }
+            }
+        } else {
+            data.selected_option = JSON.parse(data.selected_option);
+            console.log(data.selected_option);
+            user_drinks[key] = createDrink(data.selected_option);
         }
-    })
+    };
+    
+    $(".user-answer-drink").each(function(i, obj) {
+        if (user_drinks[i+1] !== undefined) {
+            obj.append(user_drinks[i+1]);
+        } else {
+            obj.textContent = "Answer Not Selected";
+        }
+    });
 });
 
 function createDrink(drink_ingredients) {
