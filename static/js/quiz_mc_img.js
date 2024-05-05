@@ -1,6 +1,14 @@
+let answered = false;
+
 function addContent() {
     event.preventDefault(); // Prevent default form submission
 
+    // Check if an option is selected
+    if (!$('input[name="answer"]:checked').val()) {
+        alert("Please select an option.");
+        return; // Exit the function if no option is selected
+    }
+    
     // Disable the submit button
     $("#submit-button").prop("disabled", true);
     // Disable all radio buttons
@@ -10,21 +18,26 @@ function addContent() {
     $("#feedback").empty();
 
     let selectedOption = Number($('input[name="answer"]:checked').val()); // Get selected option
-
     let correctAnswer = Number(question.correct_answer);
     let questionId = question.id; // Access question ID directly from the question object
-
 
     // Compare selected option's ID with correct answer's ID
     if (selectedOption === correctAnswer) {
         $("#feedback").append('<p class="text-success">Correct!</p>');
     } else {
         // Display the correct image URL if the answer is incorrect
-        $("#feedback").append('<p class="text-danger">Incorrect. The correct answer is: ' + correctAnswer + ')</p>');
+        $("#feedback").append('<p class="text-danger">Incorrect.</p>');
     }
 
     // Log selected option
     console.log('Selected option:', selectedOption);
+
+    // Mark the question as answered
+    answered = true;
+    console.log('Question answered:', answered); // Log the value of answered
+
+    // Enable navigation button if the current question is answered
+    enableNavigationButton();
 
     // Send data to the server using AJAX
     $.ajax({
@@ -43,6 +56,25 @@ function addContent() {
         }
     });
 }
+
+// Function to enable navigation button if the question is answered
+function enableNavigationButton() {
+    console.log('Enabling navigation button'); // Log to verify function call
+
+    // Check if the question is answered
+    if (answered) {
+        $(".quiz-navigation a").removeClass("disabled").attr("href", function() {
+            return $(this).data("href");
+        });
+    }
+}
+
+
+// Function to disable navigation button
+function disableNavigationButton() {
+    $(".quiz-navigation a").addClass("disabled").removeAttr("href");
+}
+
 
 function createDrink(drink_ingredients) {
     let count = 9;
@@ -74,15 +106,24 @@ function createDrink(drink_ingredients) {
     return ingredientsList;
 }
 
+
 // Execute when the document is ready
 drinks = [];
+// Execute when the document is ready
 $(document).ready(function () {
+    // Bind click event to submit button
     $("#submit-button").click(addContent);
+
+    // Initialize drinks
     question.options.forEach(option => {
         drinks.push(createDrink(option.ingredients));
     });
-    console.log(drinks)
+
+    // Append drinks to corresponding elements
     $(".img-label").each(function(i, obj) {
         obj.append(drinks[i]);
     });
+    // Disable navigation button initially
+    disableNavigationButton();
+
 });

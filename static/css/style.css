@@ -336,8 +336,11 @@ a {
 
 /* Quiz styles */
 .quiz-image {
-    max-width: 50%;
+    max-width: 40%;
     height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 60px;
 }
 
 .ingredients-list {
@@ -545,8 +548,84 @@ img.ingredient-image {
     text-align: center;
     font-size: 30px;
     font-weight: bold;
+    margin-bottom: 60px;
 }
 
 .quiz-prompt .prefix {
     color: #777;
+
+}
+
+#submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto; /* Centers horizontally */
+}
+
+#reset-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto; /* Centers horizontally */
+}
+
+.navigation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#feedback{
+    display: flex;
+    justify-content: center;
+
+}
+
+#drink {
+    display: flex;
+    justify-content: center;
+}
+
+#ingredients {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+}
+
+.ingredients-heading {
+    font-size: 25px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.ingredients-legend {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+}
+
+.quiz-option-row {
+    margin-bottom: 30px;
+}
+
+.quiz-navigation.btn.btn-primary {
+    background-color: #E1D7CD;
+    border-color: #E1D7CD;
+
+}
+
+.quiz-navigation.btn.btn-primary:hover {
+    background-color: #E1D7CD;
+    border-color: #E1D7CD;
+}
+
+.quiz-navigation.btn.btn-primary a {
+    color: black;
+}
+
+#submit-button .btn.custom-button-color {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
 }

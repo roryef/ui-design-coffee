@@ -47,41 +47,42 @@
             </div>
         </div>
     
-        <div class="row">
+        <div class="row quiz-option-row">
             {% for option in question.options %}
             <div class="col-md-3">
                 <div class="option">
-                    <p>{{ option.id }})</p>
-                    {% if 'question_img' in question %}
-                    <p>{{ option.text }}</p>
-                    {% endif %}
                     <div class="row">
                         <div class="col-md-2">
                             <input type="radio" id="{{ option.id }}" name="answer" value="{{ option.id }}">
                         </div>
                         <div class="col-md-10">
                             <div class="img-label"></div>
+                            {% if 'question_img' in question %}
+                            <p>{{ option.text }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-        <button type="submit" id="submit-button">Submit</button>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="submit-button">
+                    <button id="submit" class="btn custom-button-color">Check</button>
+                </div>
+            </div>
+        </div>
         
         
         <div class="navigation">
-            <nav class="quiz-navigation">
-                {% if question.next == "Review" %}
-                    <a href="{{ url_for('quiz_review') }}">Review</a>
-                {% endif %}
-                {% if question.previous %}
-                    <a href="{{ url_for('quiz_question', question_id=question.previous) }}">Previous</a>
-                {% endif %}
-                {% if question.next %}
+            <nav class="quiz-navigation btn btn-primary">
+                {% if question.next == 9 %}
+                    <a href="{{ url_for('quiz_review') }}">Submit</a>
+                {% else %}
                     <a href="{{ url_for('quiz_question', question_id=question.next) }}">Next</a>
                 {% endif %}
-                
             </nav>
         </div>
     </div>
