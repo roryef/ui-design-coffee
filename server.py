@@ -153,14 +153,14 @@ lesson_metadata = {
 
 quiz_metadata = {
     "questions": {
-        "1": "Question 1: Select the image that corresponds to a Latte.",
-        "2": "Question 2: Select the final product.",
-        "3": "Question 3: Drag and drop the ingredients to make an Espresso.",
-        "4": "Question 4: Drag and drop the ingredients to make a Cortado.",
-        "5": "Question 5: Drag and drop the ingredients to make a Macchiato.",
-        "6": "Question 6: Drag and drop the ingredients to make a (Syrup) Latte.",
-        "7": "Question 7: Drag and drop the ingredients to make a Cappuccino.",
-        "8": "Question 8: Drag and drop the ingredients to make a Mocha.",
+        1: "Question 1: Select the image that corresponds to a Latte.",
+        2: "Question 2: Select the final product.",
+        3: "Question 3: Drag and drop the ingredients to make an Espresso.",
+        4: "Question 4: Drag and drop the ingredients to make a Cortado.",
+        5: "Question 5: Drag and drop the ingredients to make a Macchiato.",
+        6: "Question 6: Drag and drop the ingredients to make a (Syrup) Latte.",
+        7: "Question 7: Drag and drop the ingredients to make a Cappuccino.",
+        8: "Question 8: Drag and drop the ingredients to make a Mocha.",
         "review": "Review"
     }
 }

@@ -9,12 +9,12 @@
     <h3>Progress</h3>
     <ul>
         {% for key, value in metadata.items() if key != 'review' %}
-            <li {% if key == question_id %}class="active"{% endif %}>
-                <a href="{{ url_for('quiz_question', question_id=key) }}">Question {{ key }}</a>
+            <li {% if key == question.id %}class="active"{% endif %}>
+                Question {{ key }}</a>
             </li>
         {% endfor %}
         <li>
-            <a href="{{ url_for('quiz_review') }}">Submit</a>
+            Review
         </li>
     </ul>
     <div class="legend-section">

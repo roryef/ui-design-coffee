@@ -104,6 +104,9 @@ $( document ).ready(function() {
     });
 
     $("#reset").click(function() {
+        if(answered) {
+            return;
+        }
         drink_ingredients = [];
         $("#drink").empty();
         $("#drink").append(renderDrink(drink_ingredients));
