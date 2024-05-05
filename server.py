@@ -805,11 +805,7 @@ quiz = {
                                 ("water", 2)
                             ]}
         ],
-        "correct_answer": [
-                                ("espresso", 2),
-                                ("milk", 3),
-                                ("foam", 1)
-                            ],
+        "correct_answer": 2,
         "next": 2,
     },
     {
@@ -838,10 +834,7 @@ quiz = {
                                 ("water", 2)
                             ]}
         ],
-        "correct_answer": [
-                                ("espresso", 2),
-                                ("water", 2)
-                            ],
+        "correct_answer": 4,
         "next": 3,
         "previous": 1
     },

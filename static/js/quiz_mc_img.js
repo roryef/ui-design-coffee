@@ -33,7 +33,7 @@ function addContent() {
         data: {
             questionId: questionId,
             selectedOption: selectedOption,
-            correctAnswer: JSON.stringify(correctAnswer)
+            correctAnswer: correctAnswer
         },
         success: function(response) {
             console.log(response); // Log the response from the server

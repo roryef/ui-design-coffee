@@ -2,7 +2,13 @@ $(document).ready(function() {
     const answer_drinks = []
     const user_drinks = {}
     quiz.questions.forEach((question, index) => {
-        answer_drinks.push(createDrink(question.correct_answer));
+        if (index < 2) {
+            const correctIngredients = question.options.find(option => option.id === question.correct_answer).ingredients;
+            answer_drinks.push(createDrink(correctIngredients));
+        } else {
+
+            answer_drinks.push(createDrink(question.correct_answer));
+        }
     });
     $(".answer-drink").each(function(i, obj) {
         obj.append(answer_drinks[i]);
