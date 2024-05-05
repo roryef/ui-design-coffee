@@ -2,23 +2,13 @@ $(document).ready(function() {
     const answer_drinks = []
     const user_drinks = {}
     quiz.questions.forEach((question, index) => {
-        if (index < 2) {
-            // For the first two questions
-            const correctIngredients = question.options.find(option => option.id === question.correct_answer).ingredients;
-            answer_drinks.push(createDrink(correctIngredients));
-        } else {
-            // For other questions
-            answer_drinks.push(createDrink(question.correct_answer));
-        }
+        answer_drinks.push(createDrink(question.correct_answer));
     });
     $(".answer-drink").each(function(i, obj) {
         obj.append(answer_drinks[i]);
     });
-
+    console.log(user_data.quiz.answers);
     for (const [key, data] of Object.entries(user_data.quiz.answers)) {
-        if (key <= 2 || data.answered === false) {
-            continue;
-        }
         data.selected_option = JSON.parse(data.selected_option)
         user_drinks[key] = createDrink(data.selected_option)
     };
