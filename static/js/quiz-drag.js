@@ -1,4 +1,5 @@
 let drink_ingredients = []
+let answered = false;
 
 function formatFeedback() {
     let feedback = '<p class="text-danger">Incorrect. The correct answer is: '
@@ -62,10 +63,30 @@ function addContent() {
             console.error(error); // Log any errors
         }
     });
+    answered = true;
+    enableNavigationButton();
+}
+
+// Function to enable navigation button if the question is answered
+function enableNavigationButton() {
+    console.log('Enabling navigation button'); // Log to verify function call
+
+    // Check if the question is answered
+    if (answered) {
+        $(".next-button-link").removeClass("disabled");
+    }
+}
+
+
+// Function to disable navigation button
+function disableNavigationButton() {
+    $(".next-button-link").addClass("disabled");
 }
 
 $( document ).ready(function() {
     $("#drink").append(renderDrink(drink_ingredients));
+
+    disableNavigationButton();
 
     legend.forEach(ingredient => {
         const imageName = ingredient.image.split("/").pop();

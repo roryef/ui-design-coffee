@@ -81,13 +81,15 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="navigation">
-                    <nav class="quiz-navigation btn btn-primary">
-                        {% if question.next == 9 %}
-                            <a href="{{ url_for('quiz_review') }}">Submit</a>
-                        {% else %}
-                            <a href="{{ url_for('quiz_question', question_id=question.next) }}">Next</a>
-                        {% endif %}
-                    </nav>
+                    {% if question.next == 9 %}
+                    <a href="{{ url_for('quiz_review') }}" class="next-button-link">
+                        <nav class="quiz-navigation btn btn-primary">Submit</nav>
+                    </a>
+                    {% else %}
+                    <a href="{{ url_for('quiz_question', question_id=question.next) }}" class="next-button-link">
+                        <nav class="quiz-navigation btn btn-primary">Next</nav>
+                    </a>
+                    {% endif %}
                 </div>
 
             </div>

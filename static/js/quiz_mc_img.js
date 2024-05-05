@@ -63,16 +63,14 @@ function enableNavigationButton() {
 
     // Check if the question is answered
     if (answered) {
-        $(".quiz-navigation a").removeClass("disabled").attr("href", function() {
-            return $(this).data("href");
-        });
+        $(".next-button-link").removeClass("disabled");
     }
 }
 
 
 // Function to disable navigation button
 function disableNavigationButton() {
-    $(".quiz-navigation a").addClass("disabled").removeAttr("href");
+    $(".next-button-link").addClass("disabled");
 }
 
 

@@ -235,8 +235,12 @@ header {
     margin-bottom: 0px;
 }
 
+a.disabled {
+    pointer-events: none;
+}
+
 .legend-image {
-    width: 180px;
+    width: 150px;
     height: 20px; 
     display: block;
 }
