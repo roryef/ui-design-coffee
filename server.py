@@ -840,7 +840,7 @@ quiz = {
     },
     {
         "id": 3,
-        "question": "Drag and drop the ingredients to make an Espresso",
+        "question": "Drag and drop the ingredients to make an ",
         "text": "Espresso",
         "correct_answer": [
             ("espresso", 1)

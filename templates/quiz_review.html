@@ -1,7 +1,6 @@
-{% extends "layout.html" %} {% block content %}
-<script
-    type="text/javascript"
-    src="{{ url_for('static', filename = 'js/quiz-review.js') }}"></script>
+{% extends "layout.html" %} 
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/quiz-review.js') }}"></script>
 <script>
     let user_data = {{ user_data | tojson }};
     let quiz = {{ quiz | tojson }};
@@ -23,11 +22,7 @@
             </div>
             <div>
                 {% for button in quiz_review_data.buttons %}
-                <a
-                    href="{{ button.link }}"
-                    class="button {{ button.color }} quiz-button"
-                    >{{ button.text }}</a
-                >
+                <a href="{{ button.link }}" class="button {{ button.color }} quiz-button">{{ button.text }}</a>
                 {% endfor %}
             </div>
         </div>
@@ -63,9 +58,6 @@
                         <tr>
                             <td class="answer-cell">
                                 <div class="user-answer-drink"></div>
-                                {% if not user_data.quiz.answers[q.id].answered %}
-                                <p>Not answered</p>
-                                {% endif %}
                             </td>
                             <td class="answer-cell">
                                 <div class="answer-drink"></div>

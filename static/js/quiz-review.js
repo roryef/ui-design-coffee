@@ -3,9 +3,13 @@ $(document).ready(function() {
     const user_drinks = {}
     quiz.questions.forEach((question, index) => {
         if (index < 2) {
-            return;
+            // For the first two questions
+            const correctIngredients = question.options.find(option => option.id === question.correct_answer).ingredients;
+            answer_drinks.push(createDrink(correctIngredients));
+        } else {
+            // For other questions
+            answer_drinks.push(createDrink(question.correct_answer));
         }
-        answer_drinks.push(createDrink(question.correct_answer))
     });
     $(".answer-drink").each(function(i, obj) {
         obj.append(answer_drinks[i]);
@@ -23,7 +27,6 @@ $(document).ready(function() {
             obj.append(user_drinks[i+3]);
         }
     })
-
 });
 
 function createDrink(drink_ingredients) {
