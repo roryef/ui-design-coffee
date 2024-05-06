@@ -21,31 +21,33 @@
 		</ul>
 	</div>
 </div>
-<div class="container">
-	<h1>{{ lesson.title }}</h1>
-	<h3>{{ lesson.subtitle }}</h3>
-	<div class="category-container">
-		{% for content in lesson.contents %}
-		<div
-			class="category-card"
-			onclick="toggleDrinks(this, '{{ content.categories.title }}')">
-			{{ content.categories.title }}
+<div class="main-content">
+	<div class="container">
+		<h1>{{ lesson.title }}</h1>
+		<h3>{{ lesson.subtitle }}</h3>
+		<div class="category-container">
+			{% for content in lesson.contents %}
+			<div
+				class="category-card"
+				onclick="toggleDrinks(this, '{{ content.categories.title }}')">
+				{{ content.categories.title }}
+			</div>
+			{% endfor %}
 		</div>
-		{% endfor %}
-	</div>
 
-	<nav class="lesson-navigation">
-		<div>
-			{% if lesson.previous %}
-			<a onclick="sendUserData('prev')">Home</a>
-			{% endif %}
-		</div>
-		<div>
-			{% if lesson.next %}
-			<a onclick="sendUserData('next')">Next</a>
-			{% endif %}
-		</div>
-	</nav>
+		<nav class="lesson-navigation">
+			<div>
+				{% if lesson.previous %}
+				<a onclick="sendUserData('prev')">Home</a>
+				{% endif %}
+			</div>
+			<div>
+				{% if lesson.next %}
+				<a onclick="sendUserData('next')">Next</a>
+				{% endif %}
+			</div>
+		</nav>
+	</div>
 </div>
 
 {% endblock %}
