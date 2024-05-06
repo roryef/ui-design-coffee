@@ -233,6 +233,7 @@ header {
 
 .legend li {
     margin-bottom: 0px;
+    color: #777;
 }
 
 a.disabled {
@@ -632,4 +633,10 @@ img.ingredient-image {
     background-color: #007bff;
     border-color: #007bff;
     color: white;
+}
+
+.quiz-sidebar-header {
+    font-weight: bold;
+    font-size: 30px;
+    
 }

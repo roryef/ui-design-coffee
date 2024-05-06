@@ -6,19 +6,16 @@
 </script>
 
 <div class="sidebar">
-    <h3>Progress</h3>
-    <ul>
+    <div class="quiz-sidebar-header">Progress</div>
+    <ul class="legend">
         {% for key, value in metadata.items() if key != 'review' %}
             <li {% if key == question.id %}class="active"{% endif %}>
                 Question {{ key }}</a>
             </li>
         {% endfor %}
-        <li>
-            Review
-        </li>
     </ul>
     <div class="legend-section">
-        <h3>Legend</h3>
+        <div class="quiz-sidebar-header">Legend</div>
         <ul class="legend">
             {% for item in legend %}
                 <li>

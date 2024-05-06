@@ -9,7 +9,7 @@
     let completed = {{ completed | tojson }};
 </script>
 <div class="sidebar">
-    <h3>Lessons</h3>
+    <div class="quiz-sidebar-header">Lessons</div>
     <ul>
         {% for key, value in lesson_metadata.contents.items() if key != 'quiz' %}
             <li {% if key == lesson.id %}class="active"{% endif %}>
@@ -21,7 +21,7 @@
         </li>
     </ul>
     <div class="legend-section">
-        <h3>Legend</h3>
+        <div class="quiz-sidebar-header">Legend</div>
         <ul class="legend">
             {% for item in legend %}
                 <li>
