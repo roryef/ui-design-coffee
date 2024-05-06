@@ -35,7 +35,7 @@
 
 <div class="main-content">
     <div class="container">
-        <h1>{{ lesson.name }}</h1>
+        <div class="lesson-header">Lesson {{ lesson.name }}</div>
         {% if lesson.video %}
             <div class="video">
                 <div class="video-wrapper">
@@ -53,6 +53,9 @@
     </div>
     <br>
     <div class="container">
+        <div class="lesson-subheader">
+            Step-by-step Instructions
+        </div>
         <div class="cards-wrapper">
             <div class="card-container">
                 {% for drink in lesson.drinks %}
@@ -61,44 +64,45 @@
                             {% for slide in drink.slides %}
                                 <div class="slide" id="slide-{{ drink.drink_id }}-{{ slide.slide_id }}" {% if loop.index > 1 %}style="display: none;"{% endif %}>
                                     {% if slide.title_type== 'text' %}
-                                        <h2>{{slide.title}}</h2>
+                                        <div class="lesson-instructions">{{slide.title}}</div>
                                     {% elif slide.title_type == 'button' %}
                                         <button class="reset-button" onclick="resetDrink({{ drink.drink_id }})">{{ slide.title }}</button>
                                     {% endif %}
                                     {% if slide.body_type == 'text' %}
-                                        <h3>{{ slide.body }}</h3>
+                                        <div class="lesson-drink-name">{{ slide.body }}</div>
                                     {% elif slide.body_type == 'image' %}
-                                        <img src="{{ url_for('static', filename=slide.body) }}" alt="{{ slide.title }}">
+                                        <div class="image-container">
+                                            <img src="{{ url_for('static', filename=slide.body) }}" alt="{{ slide.title }}">
+                                        </div>
                                     {% elif slide.body_type == 'drink' %}
-                                    <div class="drink">
-                                        <div class="drink-image-container" recipe={{ slide.body.ingredients }}></div>
-                                    </div>
+                                        <div class="drink">
+                                            <div class="drink-image-container" recipe={{ slide.body.ingredients }}></div>
+                                        </div>
                                     {% endif %}
                                 </div>
                             {% endfor %}
                         </div>
                         <div class="card-footer">
-                            <div class="arrows">
-                                <span class="arrow left-arrow" onclick="changeSlide({{ drink.drink_id }}, 'prev')">&#10094;</span>
-                                <span class="arrow right-arrow" onclick="changeSlide({{ drink.drink_id }}, 'next')">&#10095;</span>
-                            </div>
                             <div class="dots">
                                 {% for slide in drink.slides %}
                                     <span class="dot" onclick="goToSlide({{ drink.drink_id }}, {{ slide.slide_id }})"></span>
                                 {% endfor %}
+                            </div>
+                            <div class="arrows">
+                                <span class="arrow left-arrow" onclick="changeSlide({{ drink.drink_id }}, 'prev')">&#10094;</span>
+                                <span class="arrow right-arrow" onclick="changeSlide({{ drink.drink_id }}, 'next')">&#10095;</span>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
+        
         <nav class="lesson-navigation">
-            <div>
+            <div class="nav-buttons">
                 {% if lesson.previous %}
-                <a onclick="sendUserData('prev')">Previous</a>
+                <a onclick="sendUserData('prev')">Home</a>
                 {% endif %}
-            </div>
-            <div>
                 {% if lesson.next %}
                 <a onclick="sendUserData('next')">Next</a>
                 {% endif %}

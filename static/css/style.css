@@ -116,77 +116,79 @@ header {
 }
 
 
-/* Lesson Card styles */
 .cards-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; 
-    justify-content: center; 
-    padding: 20px; 
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
 }
 
 .card-container {
     display: flex;
-    flex-wrap: wrap; 
-    justify-content: center; 
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
 .card {
-    width: 350px;
-    height: 500px;
+    width: 250px; /* Adjust the width */
+    height: 400px; /* Adjust the height */
     display: flex;
     flex-direction: column;
     align-items: center;
     background: white;
-    border-radius: 10px;
-    padding: 15px;
+    border-radius: 8px;
+    padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card-content {
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center; 
-    flex-grow: 1; 
-    padding: 20px;
+    align-items: center;
+    flex-grow: 1;
+    padding: 10px;
 }
 
 .card-content img {
-    max-width: 100%; 
-    max-height: 250px; 
-    width: auto; 
-    height: auto; 
-    margin-bottom: 20px; 
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
+
 
 
 .card-footer {
-    padding: 10px;
+    padding: 5px;
     display: flex;
-    justify-content: center; 
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
 }
 
 .arrows {
-    display: flex;
+    margin-top: 5px; /* Add margin to separate arrows from dots */
 }
 
 .arrow {
     cursor: pointer;
-    padding: 10px;
+    padding: 5px;
     user-select: none;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .dots {
     text-align: center;
+    margin-top: 5px; /* Add margin to separate dots from arrows */
 }
 
 .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 5px;
+    height: 10px;
+    width: 10px;
+    margin: 0 3px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
@@ -207,6 +209,17 @@ header {
     cursor: pointer;
     display: inline-block; 
     margin: 5px;
+}
+
+.lesson-drink-name {
+    color: #ff6a00;
+    font-size: 25px;
+}
+
+.lesson-instructions {
+    text-align: center;
+    font-size: 20px;
+    color: #777
 }
 
 .sidebar {
@@ -262,6 +275,16 @@ a.disabled {
     width: 150px;
     height: 20px; 
     display: block;
+}
+
+.lesson-navigation {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    margin-top: 10px; /* Add some spacing between the content and navigation */
+}
+
+.nav-buttons a {
+    margin-left: 10px; /* Add space between buttons */
 }
 
 /* Navigation style */
@@ -671,6 +694,13 @@ img.ingredient-image {
 
 .lesson-header{
     font-weight: bold;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.lesson-subheader{
+    font-weight: bold;
     font-size: 30px;
     margin-bottom: 20px;
+    text-align: center;
 }
