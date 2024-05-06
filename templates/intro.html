@@ -5,7 +5,22 @@
 	let legend = {{ legend | tojson }};
 	let ingredients = {{ ingredients | tojson }};
 </script>
-
+<div class="sidebar">
+	<div class="legend-section">
+		<h3>Legend</h3>
+		<ul class="legend">
+			{% for item in legend %}
+			<li>
+				<img
+					src="{{ url_for('static', filename=item.image) }}"
+					class="legend-image"
+					alt="{{ item.name }}" />
+				{{ item.name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
 <div class="container">
 	<h1>{{ lesson.title }}</h1>
 	<h3>{{ lesson.subtitle }}</h3>
