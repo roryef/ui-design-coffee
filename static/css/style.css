@@ -91,11 +91,30 @@ header {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.video iframe {
-    width: 100%;
-    height: 300px;
-    display: block;
+
+.video {
+    margin-bottom: 20px; /* Add some spacing between videos */
 }
+
+.video-wrapper {
+    position: relative;
+    max-width: 480px; /* Adjust the maximum width of the video wrapper */
+    width: 100%; /* Ensure the video wrapper fills its parent container */
+    margin: 0 auto; /* Center the video horizontally */
+    padding-bottom: 30%; /* Adjust the padding-bottom to maintain aspect ratio */
+    overflow: hidden; /* Ensure the video doesn't overflow its container */
+}
+
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Make the video fill the width of its container */
+    height: 100%; /* Make the video fill the height of its container */
+    border: 0; /* Remove any border around the iframe */
+}
+
 
 /* Lesson Card styles */
 .cards-wrapper {
@@ -190,12 +209,11 @@ header {
     margin: 5px;
 }
 
-/* Sidebar styles */
 .sidebar {
     background: #ffffff;
     padding: 20px;
     position: fixed; 
-    width: 200px;
+    width: 250px; /* Adjust the width to make the sidebar wider */
     top: 84px;
     bottom: 0;
     overflow-y: scroll;
@@ -649,4 +667,10 @@ img.ingredient-image {
     margin-bottom: 30px;
     font-size: 25px;
     color: #777;
+}
+
+.lesson-header{
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 20px;
 }
