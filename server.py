@@ -268,6 +268,8 @@ lessons = {
         "id": 1,
         "name": "1. Black (Espresso)",
         "video": "https://www.youtube.com/embed/LiNjMyAGVt0?si=_TVqL4wgbh8VpWZh",
+        "video_start": 14,
+        "video_end": 61,
         "video_header": "Click to watch how to pull an espresso",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
@@ -343,6 +345,8 @@ lessons = {
         "id": 2,
         "name": "2. Espresso + Steamed Milk",
         "video": "https://www.youtube.com/embed/OtdlZbc9XK0?si=QlPPzFceUqSZ5txQ",
+        "video_start": 0,
+        "video_end": 81,
         "video_header": "Click to watch how to steam milk",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
@@ -426,6 +430,8 @@ lessons = {
         "id": 3,
         "name": "3. Espresso + Steamed Milk + Foam",
         "video": "https://www.youtube.com/embed/NLO0mWJuIHk?si=IwSFV4c-V2i1-Gtw",
+        "video_start": 0,
+        "video_end": 85,
         "video_header": "Click to watch how to make foam",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
@@ -525,6 +531,8 @@ lessons = {
         "id": 4,
         "name": "4. Espresso + Others",
         "video": "https://www.youtube.com/embed/8FLzhL-T25E?si=v6iX685mOVF64UWp",
+        "video_start": 18,
+        "video_end": 87,
         "video_header": "Click to watch how to add flavor",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [

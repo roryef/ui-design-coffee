@@ -40,7 +40,7 @@
             <div class="video">
                 <div class="video-wrapper">
                     <iframe class="video" width="560" height="315"
-                        src="{{ lesson.video }}"
+                        src="{{ lesson.video }}&start={{ lesson.video_start }}&end={{ lesson.video_end }}"
                         title="YouTube video player"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -50,6 +50,7 @@
                 </div>
             </div>
         {% endif %}
+
     </div>
     <br>
     <div class="container">
@@ -103,7 +104,7 @@
         <nav class="lesson-navigation">
             <div class="nav-buttons">
                 {% if lesson.previous %}
-                <a onclick="sendUserData('prev')">Home</a>
+                <a onclick="sendUserData('prev')">Previous</a>
                 {% endif %}
                 {% if lesson.next %}
                 <a onclick="sendUserData('next')">Next</a>
