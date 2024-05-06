@@ -167,6 +167,8 @@ header {
     display: flex;
     flex-direction: column; /* Stack items vertically */
     align-items: center;
+    background-color: #E1D7CD !important;
+    width: 100%; 
 }
 
 .arrows {
