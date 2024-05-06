@@ -35,33 +35,56 @@
 
 <div class="main-content">
     <div class="container">
-        <h1>{{ lesson.name }}</h1>
+        <div class="lesson-overview">{{ lesson.name }}</div>
         {% for category in lesson.contents %}
             <div class="review-category-container">
-                <h2>{{ category.categories.title }}</h2>
-                {% if category.categories.notes %}
-                    <ul class="notes">
-                        {% for note in category.categories.notes %}
-                            <li>{{ note }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                <h3>Drinks:</h3>
-                <ul>
-                    {% for drink in category.categories.drinks %}
-                        <li class="drink">
-                            <strong>{{ drink.name }}</strong>
-                            <ul class="ingredients">
-                                {% for ingredient, quantity in drink.ingredients %}
-                                    <li>{{ ingredient }} x{{ quantity }}</li>
-                                {% endfor %}
-                            </ul>
-                            <div id="{{ drink.name }}" class="drink-image-container" --recipe={{ drink.ingredients }}>
-                                
+                <div class="lesson-subtitle-review">Lesson {{ category.categories.title }}</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="drink">
+                            <strong>{{ category.categories.drinks[0].name }}</strong>
+                            <div class="notes">{{category.categories.notes[0]}}</div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="ingredients-header">
+                                        Ingredients
+                                    </div>
+                                    <ul class="ingredients">
+                                        {% for ingredient, quantity in category.categories.drinks[0].ingredients | reverse%}
+                                            <li>{{ ingredient }} x{{ quantity }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="{{ category.categories.drinks[0].name }}" class="drink-image-container" --recipe={{ category.categories.drinks[0].ingredients }}>
+                                    </div>
+                                </div>
                             </div>
-                        </li>
-                    {% endfor %}
-                </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="drink">
+                            <strong>{{ category.categories.drinks[1].name }}</strong>
+                            <div class="notes">{{category.categories.notes[1]}}</div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="ingredients-header">
+                                        Ingredients
+                                    </div>
+                                    <ul class="ingredients">
+                                        {% for ingredient, quantity in category.categories.drinks[1].ingredients | reverse%}
+                                            <li>{{ ingredient }} x{{ quantity }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="{{ category.categories.drinks[1].name }}" class="drink-image-container" --recipe={{ category.categories.drinks[1].ingredients }}>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         {% endfor %}
 

@@ -333,7 +333,7 @@ a.disabled {
 .drink-name {
     text-align: center;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-left: 4s0px;
     margin-right: 40px;
     color:#ff6a00
 }
@@ -342,6 +342,10 @@ a.disabled {
     padding-left: 20px;
 }
 
+.ingredients-header{
+    text-align: left;
+    font-weight: bold;
+}
 .reset-button {
     margin-left: 7px;
     margin-bottom: 20px;
@@ -365,17 +369,29 @@ a {
 }
 
 .notes {
+    margin-bottom: 50px;
     font-style: italic;
-    color: #666;
+    color: #777;
 }
 
 .ingredients {
     padding-left: 20px;
     list-style-type: circle;
+    text-align: left; /* Align the text of ingredients to the left */
+
+}
+
+.drink {
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: center;
 }
 
 .drink strong {
-    color: #777;
+    font-weight: bold;
+    font-size: 20px;
+    display: block;
+    color: #ff6a00;
 }
 
 /* Quiz styles */
@@ -689,6 +705,14 @@ img.ingredient-image {
     text-align: center;
     margin-bottom: 30px;
     font-size: 25px;
+    color: #777;
+}
+
+.lesson-subtitle-review {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 30px;
     color: #777;
 }
 

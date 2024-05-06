@@ -644,7 +644,7 @@ lessons = {
                 "categories": {
                     "title": "1. Black (Espresso)",
                     "notes": [
-                        "American is a diluted espresso",
+                        "Americano is a diluted espresso",
                     ],
                     "drinks": [
                         {
@@ -668,7 +668,7 @@ lessons = {
                     "title": "2. Espresso + Steamed Milk",
                     "notes": [
                         "Macchiato has a splash of milk",
-                        "Cortado is equal parts milk (1:1 ratio)",
+                        "Cortado has equal parts milk (1:1 ratio)",
                     ],
                     "drinks": [
                         {
@@ -692,7 +692,7 @@ lessons = {
                 "categories": {
                     "title": "3. Espresso + Steamed Milk + Foam",
                     "notes": [
-                        "Cappuccino is equal parts espresso, milk and foam (1:1:1 ratio)",
+                        "Cappuccino is equal parts espresso, milk, and foam (1:1:1 ratio)",
                         "Latte is more milk and less foam",
                     ],
                     "drinks": [
