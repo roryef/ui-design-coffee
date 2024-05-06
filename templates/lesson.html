@@ -36,6 +36,7 @@
 <div class="main-content">
     <div class="container">
         <div class="lesson-header">Lesson {{ lesson.name }}</div>
+        <div class="lesson-subheader-vid">{{lesson.video_header}}</div>
         {% if lesson.video %}
             <div class="video">
                 <div class="video-wrapper">
@@ -53,50 +54,61 @@
 
     </div>
     <br>
+    <hr>
     <div class="container">
         <div class="lesson-subheader">
             Step-by-step Instructions
         </div>
         <div class="cards-wrapper">
             <div class="card-container">
-                {% for drink in lesson.drinks %}
-                    <div class="card" data-drink-id="{{ drink.drink_id }}">
-                        <div class="card-content">
-                            {% for slide in drink.slides %}
-                                <div class="slide" id="slide-{{ drink.drink_id }}-{{ slide.slide_id }}" {% if loop.index > 1 %}style="display: none;"{% endif %}>
-                                    {% if slide.title_type== 'text' %}
-                                        <div class="lesson-instructions">{{slide.title}}</div>
-                                    {% elif slide.title_type == 'button' %}
-                                    <div class="reset-button-container">
-                                        <button class="reset-button btn btn-secondary" onclick="resetDrink({{ drink.drink_id }})">{{ slide.title }}</button>
-                                    </div>
-                                    {% endif %}
-                                    {% if slide.body_type == 'text' %}
-                                        <div class="lesson-drink-name">{{ slide.body }}</div>
-                                    {% elif slide.body_type == 'image' %}
-                                        <div class="image-container">
-                                            <img src="{{ url_for('static', filename=slide.body) }}" alt="{{ slide.title }}">
-                                        </div>
-                                    {% elif slide.body_type == 'drink' %}
-                                        <div class="drink">
-                                            <div class="drink-image-container" recipe={{ slide.body.ingredients }}></div>
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div class="card-footer">
-                            <div class="dots">
+                <div class="row">
+                    {% for drink in lesson.drinks %}
+                    <div class="col-md-6">
+                        <div class="card" data-drink-id="{{ drink.drink_id }}">
+                            <div class="card-content">
                                 {% for slide in drink.slides %}
-                                    <span class="dot" onclick="goToSlide({{ drink.drink_id }}, {{ slide.slide_id }})"></span>
+                                    <div class="slide" id="slide-{{ drink.drink_id }}-{{ slide.slide_id }}" {% if loop.index > 1 %}style="display: none;"{% endif %}>
+                                        {% if slide.title_type== 'text' %}
+                                            <div class="lesson-instructions">{{slide.title}}</div>
+                                        {% elif slide.title_type == 'button' %}
+                                            <div class="reset-button-container">
+                                                <button class="reset-button btn btn-secondary" onclick="resetDrink({{ drink.drink_id }})">{{ slide.title }}</button>
+                                            </div>
+                                        {% endif %}
+                                        {% if slide.body_type == 'text' %}
+                                            <div class="lesson-drink-name">{{ slide.body }}</div>
+                                            
+                                        {% elif slide.body_type == 'image' %}
+                                            <div class="image-container">
+                                                <img src="{{ url_for('static', filename=slide.body) }}" alt="{{ slide.title }}">
+                                            </div>
+                                        {% elif slide.body_type == 'drink' %}
+                                            <div class="drink">
+                                                <div class="drink-image-container" recipe={{ slide.body.ingredients }}></div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
                                 {% endfor %}
                             </div>
-                            <div class="arrows">
-                                <span class="arrow left-arrow" onclick="changeSlide({{ drink.drink_id }}, 'prev')">&#10094;</span>
-                                <span class="arrow right-arrow" onclick="changeSlide({{ drink.drink_id }}, 'next')">&#10095;</span>
+                            <div class="card-footer">
+                                <div class="dots">
+                                    {% for slide in drink.slides %}
+                                        <span class="dot" onclick="goToSlide({{ drink.drink_id }}, {{ slide.slide_id }})"></span>
+                                    {% endfor %}
+                                </div>
+                                <div class="arrows">
+                                    <span class="arrow left-arrow" onclick="changeSlide({{ drink.drink_id }}, 'prev')">&#10094;</span>
+                                    <span class="arrow right-arrow" onclick="changeSlide({{ drink.drink_id }}, 'next')">&#10095;</span>
+                                </div>
+                            </div>
+                            <div class="drink-header">
+                                {{drink.slides[0].body}}
                             </div>
                         </div>
                     </div>
+
+
+                </div>
                 {% endfor %}
             </div>
         </div>
@@ -104,10 +116,10 @@
         <nav class="lesson-navigation">
             <div class="nav-buttons">
                 {% if lesson.previous %}
-                <a onclick="sendUserData('prev')">Previous</a>
+                <a class="previous" onclick="sendUserData('prev')">Previous</a>
                 {% endif %}
                 {% if lesson.next %}
-                <a onclick="sendUserData('next')">Next</a>
+                <a class="next" onclick="sendUserData('next')">Next</a>
                 {% endif %}
             </div>
         </nav>

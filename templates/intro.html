@@ -35,18 +35,18 @@
 			{% endfor %}
 		</div>
 
-		<nav class="lesson-navigation">
-			<div>
-				{% if lesson.previous %}
-				<a onclick="sendUserData('prev')">Home</a>
-				{% endif %}
-			</div>
-			<div>
-				{% if lesson.next %}
-				<a onclick="sendUserData('next')">Next</a>
-				{% endif %}
-			</div>
-		</nav>
+        <nav class="lesson-navigation">
+            <div class="nav-buttons">
+                {% if lesson.previous %}
+                <a class="previous" onclick="sendUserData('prev')">Home</a>
+                {% endif %}
+            </div>
+            <div class="nav-buttons">
+                {% if lesson.next %}
+                <a class="quiz" onclick="sendUserData('next')">Learn</a>
+                {% endif %}
+            </div>
+        </nav>
 	</div>
 </div>
 

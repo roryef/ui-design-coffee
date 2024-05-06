@@ -270,7 +270,7 @@ lessons = {
         "video": "https://www.youtube.com/embed/LiNjMyAGVt0?si=_TVqL4wgbh8VpWZh",
         "video_start": 14,
         "video_end": 61,
-        "video_header": "Click to watch how to pull an espresso",
+        "video_header": "How to pull an espresso shot",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
             {
@@ -347,7 +347,7 @@ lessons = {
         "video": "https://www.youtube.com/embed/OtdlZbc9XK0?si=QlPPzFceUqSZ5txQ",
         "video_start": 0,
         "video_end": 81,
-        "video_header": "Click to watch how to steam milk",
+        "video_header": "How to steam milk",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
             {
@@ -432,7 +432,7 @@ lessons = {
         "video": "https://www.youtube.com/embed/NLO0mWJuIHk?si=IwSFV4c-V2i1-Gtw",
         "video_start": 0,
         "video_end": 85,
-        "video_header": "Click to watch how to make foam",
+        "video_header": "How to make foam",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
             {
@@ -533,7 +533,7 @@ lessons = {
         "video": "https://www.youtube.com/embed/8FLzhL-T25E?si=v6iX685mOVF64UWp",
         "video_start": 18,
         "video_end": 87,
-        "video_header": "Click to watch how to add flavor",
+        "video_header": "How to add flavor",
         "content_header": "Click on each drink to learn how to make it",
         "drinks": [
             {
@@ -652,6 +652,7 @@ lessons = {
                 "categories": {
                     "title": "1. Black (Espresso)",
                     "notes": [
+                        "",
                         "Americano is a diluted espresso",
                     ],
                     "drinks": [
@@ -728,7 +729,7 @@ lessons = {
                     "title": "4. Espresso + Others",
                     "notes": [
                         "Mocha is a latte with chocolate",
-                        "(Syrup) latte a latte with different flavors",
+                        "(Syrup) latte is a latte with different flavors",
                     ],
                     "drinks": [
                         {
@@ -741,7 +742,7 @@ lessons = {
                             ]
                         },
                         {
-                            "name": "Latte",
+                            "name": "(Syrup) Latte",
                             "ingredients": [
                                 ("espresso", 2),
                                 ("syrup", 1),

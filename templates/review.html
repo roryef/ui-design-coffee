@@ -89,14 +89,14 @@
         {% endfor %}
 
         <nav class="lesson-navigation">
-            <div>
+            <div class="nav-buttons">
                 {% if lesson.previous %}
-                <a onclick="sendUserData('prev')">Previous</a>
+                <a class="previous" onclick="sendUserData('prev')">Previous</a>
                 {% endif %}
             </div>
-            <div>
+            <div class="nav-buttons">
                 {% if lesson.next %}
-                <a onclick="sendUserData('next')">Quiz</a>
+                <a class="quiz" onclick="sendUserData('next')">Quiz</a>
                 {% endif %}
             </div>
         </nav>

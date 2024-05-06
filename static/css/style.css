@@ -88,12 +88,11 @@ header {
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 
 .video {
-    margin-bottom: 20px; /* Add some spacing between videos */
+    margin-bottom: 10px; /* Add some spacing between videos */
 }
 
 .video-wrapper {
@@ -134,33 +133,30 @@ header {
 .card {
     width: 250px; /* Adjust the width */
     height: 400px; /* Adjust the height */
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: white;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    padding: 10px;
+    position: relative; /* Ensure proper stacking context */
+    padding: 10px; /* Adjust padding as needed */
+    height: 80%; /* Adjust the height as needed */
+    overflow: hidden; /* Ensure content doesn't overflow */
+    text-align: center; /* Center text horizontally */
 }
 
 .card-content img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: auto;
+    max-height: 130px; 
     width: auto;
-    height: auto;
-    object-fit: contain;
+    object-fit: contain; 
+    display: inline-block;
 }
-
-
 
 .card-footer {
     padding: 5px;
@@ -214,8 +210,8 @@ header {
 }
 
 .lesson-drink-name {
-    color: #ff6a00;
-    font-size: 25px;
+    font-size: 20px;
+    margin-top: 60px;
 }
 
 .lesson-instructions {
@@ -370,7 +366,7 @@ a {
 
 .review-category-container {
     padding-left: 220px;
-    border: 1px solid #ccc;
+    border: 3px solid #E1D7CD;
     padding: 20px;
     margin-top: 20px;
 }
@@ -679,12 +675,14 @@ img.ingredient-image {
 .quiz-navigation.btn.btn-primary {
     background-color: #E1D7CD;
     border-color: #E1D7CD;
+    color:black;
 
 }
 
 .quiz-navigation.btn.btn-primary:hover {
     background-color: #E1D7CD;
     border-color: #E1D7CD;
+    color:black;
 }
 
 .quiz-navigation.btn.btn-primary a {
@@ -726,12 +724,47 @@ img.ingredient-image {
 .lesson-header{
     font-weight: bold;
     font-size: 35px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
+
+
 
 .lesson-subheader{
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 20px;
     text-align: center;
+}
+
+.lesson-subheader-vid {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #777;
+
+}
+
+.lesson-navigation .nav-buttons a {
+    color: white;
+}
+
+.lesson-navigation .nav-buttons a.previous {
+    background-color: #777;
+}
+
+
+.drink-header {
+    font-size: 25px;
+    color: #ff6a00;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+hr {
+    background-color: #E1D7CD;
+    height: 10px;
 }
