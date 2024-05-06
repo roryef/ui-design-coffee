@@ -23,8 +23,8 @@
 </div>
 <div class="main-content">
 	<div class="container">
-		<h1>{{ lesson.title }}</h1>
-		<h3>{{ lesson.subtitle }}</h3>
+		<div class="lesson-overview">{{ lesson.title }}</div>
+		<div class="lesson-subtitle">{{ lesson.subtitle }}</div>
 		<div class="category-container">
 			{% for content in lesson.contents %}
 			<div

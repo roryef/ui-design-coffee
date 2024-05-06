@@ -168,8 +168,8 @@ quiz_metadata = {
 lessons = {
     "intro": {
       "id": "intro",
-      "title": "The lesson will teach you 4 types of coffee drinks",
-      "subtitle": "Click on each category to reveal the drinks",
+      "title": "Lesson Overview",
+      "subtitle": "4 Categories",
       "contents": [
             {
                 "categories": {

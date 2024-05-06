@@ -174,6 +174,7 @@ function toggleDrinks(element, title) {
                 hovered_4 = true;
             }
             displayIngredients(element);
+            console.log('Clicked class added:', element.classList.contains('clicked')); // Log if the clicked class is added
         })
         .catch(error => {
             console.error('Error fetching drinks:', error);
@@ -193,6 +194,7 @@ function toggleDrinks(element, title) {
                 hovered_4 = true;
             }
             displayIngredients(element);
+            console.log('Clicked class added:', element.classList.contains('clicked')); // Log if the clicked class is added
         }
     }
 }
