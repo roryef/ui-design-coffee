@@ -26,7 +26,7 @@ function addContent() {
         $("#feedback").append('<p class="text-success">Correct!</p>');
     } else {
         // Display the correct image URL if the answer is incorrect
-        $("#feedback").append('<p class="text-danger">Incorrect.</p>');
+        $("#feedback").append('<p class="text-danger">Incorrect. The correct answer is: Option ' + correctAnswer + '</p>');
     }
 
     // Log selected option

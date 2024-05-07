@@ -112,7 +112,6 @@ ingredients = [
     }
 ]
 
-
 home_data = {
     "title": "<span class='highlight'>Learn How To</span> Distinguish Coffee Drinks",
     "buttons": [
@@ -127,6 +126,7 @@ home_data = {
         }
     ]
 }
+
 quiz_review_data = {
     "buttons": [
         {
@@ -140,6 +140,7 @@ quiz_review_data = {
         }
     ]
 }
+
 lesson_metadata = {
  "contents": {
         "1": "1. Black (Espresso)",
@@ -918,7 +919,6 @@ quiz = {
         "previous": 7
     }
     ]
-
 }
 
 
@@ -994,7 +994,6 @@ def quiz_question(question_id):
         return redirect('/quiz/review')
 
     return render_template(template_name, question=question_data, metadata=question_metadata, legend=legend, ingredients=ingredients)
-
 
 @app.route('/submit-answer/<int:question_id>', methods=['POST'])
 def submit_answer(question_id):
