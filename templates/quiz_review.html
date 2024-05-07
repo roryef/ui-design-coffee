@@ -50,7 +50,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="answer-heading">Your Answer</th>
+                            <th class="answer-heading" style="color: {% if user_data.quiz.answers[q.id].answer_correct %}green{% else %}red{% endif %};">Your Answer</th>
                             <th class="answer-heading">Correct Answer</th>
                         </tr>
                     </thead>
