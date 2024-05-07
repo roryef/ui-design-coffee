@@ -950,13 +950,10 @@ def learn(page_number):
         else:
             return "Lesson data not found", 404
 
-
 @app.route('/learn/update/<page_number>/', methods=['POST'])
 def update_lesson(page_number):
     user_data["lessons"][page_number] = request.json
     return jsonify(user_data["lessons"][page_number])
-
-
 
 @app.route('/quiz/<int:question_id>', methods=['GET'])
 def quiz_question(question_id):

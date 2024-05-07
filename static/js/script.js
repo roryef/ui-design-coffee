@@ -174,6 +174,7 @@ function toggleDrinks(element, title) {
                 hovered_4 = true;
             }
             displayIngredients(element);
+            checkAllCategoriesClicked();
         })
         .catch(error => {
             console.error('Error fetching drinks:', error);
@@ -193,7 +194,21 @@ function toggleDrinks(element, title) {
                 hovered_4 = true;
             }
             displayIngredients(element);
+            checkAllCategoriesClicked();
         }
+    }
+}
+
+function checkAllCategoriesClicked() {
+    // Check if all categories are clicked
+    const allClicked = hovered_1 && hovered_2 && hovered_3 && hovered_4;
+    const learnButton = document.querySelector('.quiz');
+    if (allClicked) {
+        // Enable the Learn button
+        learnButton.classList.remove('disabled');
+    } else {
+        // Disable the Learn button
+        learnButton.classList.add('disabled');
     }
 }
 

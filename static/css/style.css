@@ -768,3 +768,8 @@ hr {
     background-color: #E1D7CD;
     height: 10px;
 }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
