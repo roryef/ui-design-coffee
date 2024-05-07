@@ -12,7 +12,7 @@
     <div class="quiz-sidebar-header">Lessons</div>
     <ul>
         {% for key, value in lesson_metadata.contents.items() if key != 'quiz' %}
-            <li {% if key == lesson.id %}class="active"{% endif %}>
+            <li {% if lesson.id|string == key %}class="active"{% endif %}>
                 <a href="{{ url_for('learn', page_number=key) }}">{{ value }}</a>
             </li>
         {% endfor %}
